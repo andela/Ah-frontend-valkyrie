@@ -3,7 +3,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>Welcome to Ah-frontend-valkyrie</p>
+        <h1>Welcome to Ah-frontend-valkyrie</h1>
       </div>
     );
   }
