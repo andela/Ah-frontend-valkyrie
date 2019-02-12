@@ -1,5 +1,12 @@
-$textcolor:#ff0000;
+$textcolor: #ff0000;
 
 h1 {
   color: $textcolor;
+}
+
+.invalid-feedback {
+  display: block;
+}
+.cursor {
+  cursor: pointer;
 }

@@ -1,27 +1,32 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Dummy from '../../assets/images/dummy.png';
-import banner from '../../assets/images/banner.png';
-import Footer from './Footer';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Dummy from "../../assets/images/dummy.png";
+import banner from "../../assets/images/banner.png";
+import Footer from "./Footer";
+import "../auth/styles/RegisterCSS.css";
 
 class Register extends Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   render() {
+    const auth_token = localStorage.getItem("auth_token");
+    let hide;
     return (
       <div>
         <div className="banner">
-          <img src={ banner } alt="banner" />
+          <img src={banner} alt="banner" />
           <div className="container text-center text-white banner-content">
             <h1 className="banner-text display-6 pt-3">
-              A social platform for the creative at heart -
-              Bringing together a community of like-minded authors.
+              A social platform for the creative at heart - Bringing together a
+              community of like-minded authors.
             </h1>
+            {auth_token !== null ? (hide = true) : ""}
             <Link
               className="btn btn-lg bg-white font-weight-bold mt-5"
+              hidden={hide}
               to="/users/register"
             >
               Get started
@@ -31,16 +36,14 @@ class Register extends Component {
         <div className="container mt-5 mb-5">
           <div className="row">
             <div className="col-md-8">
-              <h4>
-                Recent Articles
-              </h4>
+              <h4>Recent Articles</h4>
               <hr />
 
               <div className="articles">
                 <div className="article-item mt-3">
                   <div className="row">
                     <div className="col-md-4">
-                      <img src={ Dummy } className="img-fluid" alt="Dummy" />
+                      <img src={Dummy} className="img-fluid" alt="Dummy" />
                     </div>
                     <div className="col-md-8">
                       <h4>
@@ -50,12 +53,11 @@ class Register extends Component {
                       </h4>
                       <p>
                         Aliquam cursus maximus rich text editor mi eu consequat.
-                        Nullam tincidunt erat et placerat mattis.
-                        Nunc rich text editor congue,
-                        enim vitae dictum dignissim, libero nisl sagittis augue,
-                        non aliquet nibh tortor sit amet ex.
-                        Aliquam cursus maximus mi eu consequat.
-                        Nullam tincidunt erat et placerat mattis.
+                        Nullam tincidunt erat et placerat mattis. Nunc rich text
+                        editor congue, enim vitae dictum dignissim, libero nisl
+                        sagittis augue, non aliquet nibh tortor sit amet ex.
+                        Aliquam cursus maximus mi eu consequat. Nullam tincidunt
+                        erat et placerat mattis.
                       </p>
                       <div>
                         <p>
@@ -85,7 +87,7 @@ class Register extends Component {
                 <div className="article-item mt-3">
                   <div className="row">
                     <div className="col-md-4">
-                      <img src={ Dummy } className="img-fluid" alt="Dummy" />
+                      <img src={Dummy} className="img-fluid" alt="Dummy" />
                     </div>
                     <div className="col-md-8">
                       <h4>
@@ -95,12 +97,11 @@ class Register extends Component {
                       </h4>
                       <p>
                         Aliquam cursus maximus rich text editor mi eu consequat.
-                        Nullam tincidunt erat et placerat mattis.
-                        Nunc rich text editor congue,
-                        enim vitae dictum dignissim, libero nisl sagittis augue,
-                        non aliquet nibh tortor sit amet ex.
-                        Aliquam cursus maximus mi eu consequat.
-                        Nullam tincidunt erat et placerat mattis.
+                        Nullam tincidunt erat et placerat mattis. Nunc rich text
+                        editor congue, enim vitae dictum dignissim, libero nisl
+                        sagittis augue, non aliquet nibh tortor sit amet ex.
+                        Aliquam cursus maximus mi eu consequat. Nullam tincidunt
+                        erat et placerat mattis.
                       </p>
 
                       <div>
@@ -131,24 +132,21 @@ class Register extends Component {
                 <div className="article-item mt-3">
                   <div className="row">
                     <div className="col-md-4">
-                      <img src={ Dummy } className="img-fluid" alt="Dummy" />
+                      <img src={Dummy} className="img-fluid" alt="Dummy" />
                     </div>
                     <div className="col-md-8">
                       <h4>
                         <Link to="/">
-                          <strong>
-                            Dummy article title.
-                          </strong>
+                          <strong>Dummy article title.</strong>
                         </Link>
                       </h4>
                       <p>
                         Aliquam cursus maximus rich text editor mi eu consequat.
-                        Nullam tincidunt erat et placerat mattis.
-                        Nunc rich text editor congue,
-                        enim vitae dictum dignissim, libero nisl sagittis augue,
-                        non aliquet nibh tortor sit amet ex.
-                        Aliquam cursus maximus mi eu consequat.
-                        Nullam tincidunt erat et placerat mattis.
+                        Nullam tincidunt erat et placerat mattis. Nunc rich text
+                        editor congue, enim vitae dictum dignissim, libero nisl
+                        sagittis augue, non aliquet nibh tortor sit amet ex.
+                        Aliquam cursus maximus mi eu consequat. Nullam tincidunt
+                        erat et placerat mattis.
                       </p>
 
                       <div>
@@ -199,27 +197,13 @@ class Register extends Component {
                 <li className="list-group-item active rounded-0">
                   Featured Authors
                 </li>
-                <li className="list-group-item rounded-0">
-                  Frank
-                </li>
-                <li className="list-group-item">
-                  Baker
-                </li>
-                <li className="list-group-item">
-                  Farooq
-                </li>
-                <li className="list-group-item">
-                  Manzede
-                </li>
-                <li className="list-group-item">
-                  Miko
-                </li>
-                <li className="list-group-item">
-                  Tim
-                </li>
-                <li className="list-group-item">
-                  Lia
-                </li>
+                <li className="list-group-item rounded-0">Frank</li>
+                <li className="list-group-item">Baker</li>
+                <li className="list-group-item">Farooq</li>
+                <li className="list-group-item">Manzede</li>
+                <li className="list-group-item">Miko</li>
+                <li className="list-group-item">Tim</li>
+                <li className="list-group-item">Lia</li>
               </ul>
 
               <div className="tags mt-3">

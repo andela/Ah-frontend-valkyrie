@@ -1,0 +1,41 @@
+.row {
+  margin-top: 60px;
+}
+#submit_btn {
+  color: #fff;
+  background-color: #3d3e5d;
+  border-color: #343a40;
+}
+
+.twitter-btn {
+  background-color: #00a2f8;
+  color: #fff;
+  margin-left: 40px;
+}
+.facebook-btn {
+  background-color: #3b5998;
+  color: #fff;
+  margin-left: 40px;
+}
+.btn-danger {
+  margin-left: 65px;
+}
+button i {
+  padding-right: 10px;
+}
+.social_buttons {
+  align-content: center;
+}
+.or {
+  color: red;
+  text-align: center;
+}
+.alert {
+  margin-top: 10px;
+}
+#alert-2 {
+  display: none;
+}
+#reg-button {
+  display: block;
+}

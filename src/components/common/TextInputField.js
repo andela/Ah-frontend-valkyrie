@@ -1,29 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
-const TextInputField = ( {
+const TextInputField = ({
   name,
   label,
   type,
   placeholder,
-  classname,
   icon,
+  classname,
   changed,
-  required,
-} ) => (
+  required
+}) => (
   <div className="form-group">
     <div className="input-group">
       <span className="input-group-addon">
-        <i className={ icon } />
+        <i className={icon} />
       </span>
       <input
-        name={ name }
-        label={ label }
-        type={ type }
-        placeholder={ placeholder }
-        className={ classname }
-        onChange={ changed }
-        required={ required }
+        name={name}
+        label={label}
+        type={type}
+        placeholder={placeholder}
+        className={classname}
+        onChange={changed}
+        required={required}
       />
     </div>
   </div>
@@ -37,17 +38,17 @@ TextInputField.propTypes = {
   icon: PropTypes.string,
   classname: PropTypes.string,
   changed: PropTypes.func,
-  required: PropTypes.bool,
+  required: PropTypes.bool
 };
 TextInputField.defaultProps = {
-  label: '',
-  placeholder: '',
-  icon: '',
-  classname: '',
+  label: "",
+  placeholder: "",
+  icon: "",
+  classname: "",
   required: false,
-  name: '',
-  type: '',
-  changed: null,
+  name: "",
+  type: "",
+  changed: null
 };
 
 export default TextInputField;
