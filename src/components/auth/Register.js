@@ -7,6 +7,11 @@ import RegisterForm from "./RegisterForm";
 import "./styles/RegisterCSS.css";
 import "./styles/Login.css";
 import Button from "../common/Button";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faSpinner);
 
 class Register extends Component {
   constructor(props) {
@@ -17,7 +22,8 @@ class Register extends Component {
       password: "",
       password2: "",
       disabled: false,
-      errors: {},
+      display: "none",
+      errors: {}
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -41,11 +47,11 @@ class Register extends Component {
       }
     }
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
   };
 
   onSubmit(e) {
     e.preventDefault();
+    this.setState({ display: "block" });
     const userData = {
       username: this.state.username,
       email: this.state.email,
@@ -56,9 +62,7 @@ class Register extends Component {
 
   render() {
     const { errors } = this.props;
-    console.log(errors);
     const none = "none";
-    const block = "block";
 
     return (
       <div className="container">
@@ -68,7 +72,17 @@ class Register extends Component {
           id="alert"
           style={{ display: none }}
         />
-        <div className="row" id="reg_div" style={{ display: block }}>
+        <div
+          className="spinner"
+          id="spinner"
+          style={{ display: this.state.display }}
+        >
+          <FontAwesomeIcon
+            icon="spinner"
+            className="fal fa-spinner fa-3x fa-pulse"
+          />
+        </div>
+        <div className="row" id="reg_div">
           <div className="col-md-6 m-auto">
             <h4 className="text-center">Create your account</h4>
             <RegisterForm

@@ -30,12 +30,13 @@ export const signUp = (data) => {
         if (response.user) {
           dispatch(signupSuccess(response.user));
 
-          document.getElementById("reg-form").reset();
+          document.getElementById("spinner").style.display = "none";
           document.getElementById("alert").style.display = "block";
           document.getElementById("alert").innerHTML = "An activation link has been sent to your email.Follow the link to activate your account";
           document.getElementById("reg_div").style.display = "none";
         } else {
           dispatch(signupFail(response.errors));
+          document.getElementById("spinner").style.display = "none";
         }
       })
       .catch(response => dispatch(signupFail(response.errors)));
