@@ -3,31 +3,43 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "10.15.1"
+  },
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production",
     "test:w": "jest --watch --coverage",
     "test:coverage": "jest --coverage --colors",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "node server.js",
+    "build": "webpack --mode production",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "express": "^4.16.4",
+    "express-favicon": "^2.0.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.11.0",
+    "path": "^0.12.7",
     "prop-types": "^15.7.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",
-    "react-scripts": "1.1.4",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.5",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "react-router-dom": "^4.3.1"
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -52,5 +64,6 @@
       "\\.('jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$": "<rootDir>/src/fileMock.js",
       "\\.(css|scss)$": "<rootDir>/src/styleMock.js"
     }
-  }
+  },
+  "heroku-run-build-script": true
 }

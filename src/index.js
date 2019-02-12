@@ -6,10 +6,9 @@ import App from './App';
 import './assets/scss/style.scss';
 import './assets/css/style.css';
 
-
 render(
-  <Provider store={store}>
+  <Provider store={ store }>
     <App />
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById( 'root' ),
 );
