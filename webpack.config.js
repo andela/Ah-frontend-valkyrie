@@ -1,10 +1,10 @@
-const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require( 'path' );
+const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve( __dirname, 'dist' ),
     filename: 'main.js',
     publicPath: '/',
   },
@@ -27,11 +27,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        loaders: [ 'style-loader', 'css-loader', 'sass-loader' ],
       },
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader'],
+        loaders: [ 'style-loader', 'css-loader' ],
       },
     ],
   },
@@ -39,9 +39,9 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    new HtmlWebPackPlugin({
+    new HtmlWebPackPlugin( {
       template: './src/index.html',
       filename: './index.html',
-    }),
+    } ),
   ],
 };

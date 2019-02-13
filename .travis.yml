@@ -19,7 +19,7 @@ before_script:
 script:
   - npm install
   - npm install jest@latest
-  - npm test
+  - npm run test -- -u --coverage
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
