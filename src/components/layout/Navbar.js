@@ -10,6 +10,7 @@ import "./styles/Navbar.css";
 import profileImage from "../../assets/images/img_avatar.png";
 import logout from "../../actions/index";
 
+
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -70,7 +71,7 @@ class Navbar extends Component {
         <Modal>
           <Login />
         </Modal>
-      </div>
+      </div>    
     );
   }
 }

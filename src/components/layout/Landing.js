@@ -6,8 +6,8 @@ import Footer from "./Footer";
 import "../auth/styles/RegisterCSS.css";
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.state = {};
   }
 
@@ -36,7 +36,7 @@ class Register extends Component {
         <div className="container mt-5 mb-5">
           <div className="row">
             <div className="col-md-8">
-              <h4>Recent Articles</h4>
+              <h2>Recent Articles</h2>
               <hr />
 
               <div className="articles">
@@ -48,7 +48,7 @@ class Register extends Component {
                     <div className="col-md-8">
                       <h4>
                         <Link to="/">
-                          <strong>Dummy article title.</strong>
+                          <strong>Dummy article title</strong>
                         </Link>
                       </h4>
                       <p>
@@ -92,7 +92,7 @@ class Register extends Component {
                     <div className="col-md-8">
                       <h4>
                         <Link to="/">
-                          <strong>Dummy article title.</strong>
+                          <strong>Dummy article title</strong>
                         </Link>
                       </h4>
                       <p>
@@ -137,7 +137,7 @@ class Register extends Component {
                     <div className="col-md-8">
                       <h4>
                         <Link to="/">
-                          <strong>Dummy article title.</strong>
+                          <strong>Dummy article title</strong>
                         </Link>
                       </h4>
                       <p>
