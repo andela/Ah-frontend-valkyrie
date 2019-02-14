@@ -1,7 +1,8 @@
+import { loginSuccess } from './loginActions';
 
-//Sample actions
+const logout = () => ( dispatch ) => {
+  localStorage.clear();
+  dispatch( loginSuccess( {} ) );
+};
 
-export const FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS';
-
-export const fetchArticlesSuccess = articles =>
-  ({ type: FETCH_ARTICLES_SUCCESS, payload: articles });
+export default logout;
