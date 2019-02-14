@@ -13,11 +13,11 @@ class Login extends Component {
     this.state = {};
   }
 
-  onSubmit = (event) => {
+  onSubmit = ( event ) => {
     event.preventDefault();
     const { email, password } = this.state;
-    this.props.login(email, password);
-  };
+    this.props.login( email, password );
+  }
 
 
   render() {
@@ -35,16 +35,8 @@ class Login extends Component {
         />
         <h4 className="text-center">Sign in with</h4>
         <Button text="Google" icon="fab fa-google" className="btn btn-danger" />
-        <Button
-          text="Twitter"
-          icon="fab fa-twitter"
-          className="btn twitter-btn"
-        />
-        <Button
-          text="Facebook"
-          icon="fab fa-facebook-f"
-          className="btn facebook-btn"
-        />
+        <Button text="Twitter" icon="fab fa-twitter" className="btn twitter-btn" />
+        <Button text="Facebook" icon="fab fa-facebook-f" className="btn facebook-btn" />
         <ResetPasswordFunction />
       </Container>
     );
@@ -73,8 +65,8 @@ export const ResetPasswordFunction = () => (
     <div className="col-md-6">
       <p className="text-center mt-2">
         Forgot password?
-        {" "}
-        <a href="/users/reset-password">Reset</a>
+        {' '}
+        <a href="/reset_password">Reset</a>
       </p>
     </div>
   </div>
@@ -84,13 +76,13 @@ Container.propTypes = {
   children: PropTypes.instanceOf(Array).isRequired,
 };
 
-Login.propTypes = {
+Login.propTypes = ( {
   isLoginPending: PropTypes.bool.isRequired,
   loginError: PropTypes.string,
   login: PropTypes.func.isRequired,
-};
+} );
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ( {
   isLoginPending: state.loginReducer.isLoginPending,
   loginSuccess: state.loginReducer.loginSuccess,
   loginError: state.loginReducer.loginError,

@@ -23,13 +23,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/moxios": "^0.4.8",
     "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.5",
     "classnames": "^2.2.6",
     "css-loader": "^2.1.0",
+    "dotenv-webpack": "^1.7.0",
+    "email-validator": "^2.0.4",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "express": "^4.16.4",
@@ -73,6 +74,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "devDependencies": {
+    "@types/moxios": "^0.4.8",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/polyfill": "^7.0.0-beta.51",

@@ -1,5 +1,6 @@
-const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require( 'path' );
+const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
+const Dotenv = require( 'dotenv-webpack' );
 
 module.exports = {
   entry: "./src/index.js",
@@ -47,12 +48,15 @@ module.exports = {
     ],
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      disableDotRule: true,
+    },
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html",
-    }),
+    new HtmlWebPackPlugin( {
+      template: './src/index.html',
+      filename: './index.html',
+    } ),
+    new Dotenv()
   ],
 };
