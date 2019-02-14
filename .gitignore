@@ -1,6 +1,7 @@
 node_modules/
-dist/
 package-lock.json
+dist/index.html
+dist/main.js
 yarn.lock
 package-lock.json
 npm-debug.log*
