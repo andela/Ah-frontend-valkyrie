@@ -4,8 +4,12 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/095c9124dbc3cdefb1c2/maintainability)](https://codeclimate.com/github/andela/ah-frontend-valkyrie/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/095c9124dbc3cdefb1c2/test_coverage)](https://codeclimate.com/github/andela/ah-frontend-valkyrie/test_coverage)
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=ah-frontend-valkyrie)](http://ah-frontend-valkyrie.herokuapp.com)
 
 ## Vision
 
 Create a community of like minded authors to foster inspiration and innovation
 by leveraging the modern web.
+
+### Heroku Link
+Visit [https://ah-frontend-valkyrie.herokuapp.com](https://ah-frontend-valkyrie.herokuapp.com) to see the app in action.
