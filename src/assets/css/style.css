@@ -54,3 +54,11 @@ body {
 .color-gold {
   color: #f4eb49 !important;
 }
+
+.color-gold {
+  color: #f4eb49 !important;
+}
+
+#password-alert{
+  display: none;
+}
