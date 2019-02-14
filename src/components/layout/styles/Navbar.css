@@ -1,0 +1,19 @@
+.Navbar{
+    background-color: #3d405b;
+    color: #fff;
+}
+.signIn{
+    cursor: pointer;
+    color: #3d405b
+}
+.profile-image{
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.notification {
+    height: 32px;
+    width: 32px;
+    color: #fff;
+}

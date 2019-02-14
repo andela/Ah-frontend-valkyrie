@@ -8,6 +8,7 @@ module.exports = {
     filename: 'main.js',
     publicPath: '/',
   },
+  resolve: { extensions: [ '.js', '.jsx' ] },
   module: {
     rules: [
       {
