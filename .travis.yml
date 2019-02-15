@@ -17,8 +17,9 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - npm install
+  - rm -f package-lock.json && npm install
   - npm install jest@latest
+  - npm run build
   - npm run test -- -u --coverage
 
 after_script:

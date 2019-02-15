@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 import TextInputField from '../common/TextInputField';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.state = {};
   }
+
   render() {
     return (
-      <div className="container">
+      <div className="container mt-5">
         <div className="row">
           <div className="col-md-6 m-auto">
             <h4 className="text-center">Sign in to your account</h4>
