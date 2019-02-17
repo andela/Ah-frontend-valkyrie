@@ -8,14 +8,14 @@ const storeFake = (state, action) => ({
   subscribe: jest.fn(),
   default: jest.fn(),
   getState: () => state,
-  dispatch: () => action
+  dispatch: () => action,
 });
 
 const store = storeFake({
   signupReducer: {
     errors: {},
-    user: {}
-  }
+    user: {},
+  },
 });
 
 describe("Register functionality", () => {
@@ -23,7 +23,7 @@ describe("Register functionality", () => {
   const wrapper = mount(
     <Provider store={store}>
       <Register {...props} />
-    </Provider>
+    </Provider>,
   );
   it("Register should render correctly", () => {
     const component = wrapper;

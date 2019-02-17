@@ -15,34 +15,33 @@ describe("signup actions", () => {
     const store = mockStore({ user: {} });
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     fetchMock.postOnce(
-      proxyurl +
-        "http://ah-backend-valkyrie-staging.herokuapp.com/api/v1/users/register",
+      `${proxyurl
+      }http://ah-backend-valkyrie-staging.herokuapp.com/api/v1/users/register`,
       {
         headers: {
-          "content-type": "application/json"
+          "content-type": "application/json",
         },
         body: {
           user: {
             username: "araalifarooq",
             email: "farooq@gmail.com",
-            password: "Araali@12"
-          }
-        }
-      }
+            password: "Araali@12",
+          },
+        },
+      },
     );
     store.dispatch(signUp());
     expect(store.getActions()).toEqual([]);
   });
 
   it("should fetch SIGNUPSUCESS on registering new user", () => {
-    const response =
-      "An activation link has been sent to your email.Follow the link to activate your account";
+    const response = "An activation link has been sent to your email.Follow the link to activate your account";
 
     const expectedActions = [
       {
         type: actionTypes.SIGNUPSUCCESS,
-        payload: response
-      }
+        payload: response,
+      },
     ];
     const store = mockStore({ user: {} });
     store.dispatch(signupSuccess(response));
@@ -53,8 +52,8 @@ describe("signup actions", () => {
     const failAction = [
       {
         type: actionTypes.SIGNUPFAIL,
-        payload: "email arleady exists"
-      }
+        payload: "email arleady exists",
+      },
     ];
     const emailError = "email arleady exists";
     const store = mockStore({ user: {} });

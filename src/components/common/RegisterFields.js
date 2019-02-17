@@ -9,34 +9,32 @@ const TextInputField = ({
   placeholder,
   icon,
   onChange,
-  error
-}) => {
-  return (
-    <div className="form-group">
-      <div className="input-group">
-        <span className="input-group-addon">
-          <i className={icon} />
-        </span>
-        <input
-          name={name}
-          label={label}
-          type={type}
-          placeholder={placeholder}
-          icon={icon}
-          onChange={onChange}
-          className={classnames("form-control form-control-lg", {
-            "is-invalid ml-2": error
-          })}
-        />
-      </div>
-      {error && (
-        <div className="alert alert-danger" role="alert">
-          {error}
-        </div>
-      )}
+  error,
+}) => (
+  <div className="form-group">
+    <div className="input-group">
+      <span className="input-group-addon">
+        <i className={icon} />
+      </span>
+      <input
+        name={name}
+        label={label}
+        type={type}
+        placeholder={placeholder}
+        icon={icon}
+        onChange={onChange}
+        className={classnames("form-control form-control-lg", {
+          "is-invalid ml-2": error,
+        })}
+      />
     </div>
-  );
-};
+    {error && (
+      <div className="alert alert-danger" role="alert">
+        {error}
+      </div>
+    )}
+  </div>
+);
 
 TextInputField.propTypes = {
   name: PropTypes.string.isRequired,
@@ -46,12 +44,12 @@ TextInputField.propTypes = {
   icon: PropTypes.string,
   classname: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  error: PropTypes.string
+  error: PropTypes.string,
 };
 TextInputField.defaultProps = {
   label: "",
   placeholder: "",
-  icon: ""
+  icon: "",
 };
 
 export default TextInputField;

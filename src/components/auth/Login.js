@@ -5,6 +5,7 @@ import { login } from "../../actions/loginActions";
 import "./styles/Login.css";
 import Button from "../common/Button";
 import LoginForm from "./login/LoginForm";
+import { changelistener } from "../../../utils/globals";
 
 class Login extends Component {
   constructor(props) {
@@ -12,15 +13,12 @@ class Login extends Component {
     this.state = {};
   }
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
     this.props.login(email, password);
   };
 
-  ChangedHandler = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
 
   render() {
     const { email, password } = this.state;
@@ -31,7 +29,7 @@ class Login extends Component {
           onSubmit={this.onSubmit}
           email={email}
           password={password}
-          changed={this.ChangedHandler}
+          changed={changelistener(this)}
           isLoginPending={isLoginPending}
           loginError={loginError}
         />
@@ -74,34 +72,36 @@ export const ResetPasswordFunction = () => (
     </div>
     <div className="col-md-6">
       <p className="text-center mt-2">
-        Forgot password? <a href="/users/reset-password">Reset</a>
+        Forgot password?
+        {" "}
+        <a href="/users/reset-password">Reset</a>
       </p>
     </div>
   </div>
 );
 
 Container.propTypes = {
-  children: PropTypes.instanceOf(Array).isRequired
+  children: PropTypes.instanceOf(Array).isRequired,
 };
 
 Login.propTypes = {
   isLoginPending: PropTypes.bool.isRequired,
   loginError: PropTypes.string,
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   isLoginPending: state.loginReducer.isLoginPending,
   loginSuccess: state.loginReducer.loginSuccess,
   loginError: state.loginReducer.loginError,
-  isAuthenticated: state.loginReducer.isAuthenticated
+  isAuthenticated: state.loginReducer.isAuthenticated,
 });
 
 const mapDispatchToProps = dispatch => ({
-  login: (email, password) => dispatch(login(email, password))
+  login: (email, password) => dispatch(login(email, password)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Login);

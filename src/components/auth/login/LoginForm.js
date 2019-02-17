@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import TextInputField from '../../common/TextInputField';
-import Alert from '../../Alert/Alert';
+import React from "react";
+import PropTypes from "prop-types";
+import TextInputField from "../../common/TextInputField";
+import Alert from "../../Alert/Alert";
 
-const LoginForm = ( props ) => {
+const LoginForm = (props) => {
   const {
     onSubmit, changed, email, password, isLoginPending, loginError,
   } = props;
   return (
-    <form name="LoginForm" onSubmit={ onSubmit } id="login-form">
+    <form name="LoginForm" onSubmit={onSubmit} id="login-form">
       <TextInputField
         name="email"
         placeholder="Email"
         type="text"
         classname="form-control form-control-lg"
         icon="fas fa-envelope"
-        changed={ changed }
-        value={ email }
+        changed={changed}
+        value={email}
         required
       />
 
@@ -26,8 +26,8 @@ const LoginForm = ( props ) => {
         type="password"
         classname="form-control form-control-lg"
         icon="fas fa-unlock-alt"
-        changed={ changed }
-        value={ password }
+        changed={changed}
+        value={password}
         required
       />
       <input type="submit" className="btn btn-block mt-4 btn-login" value="Sign in" />
@@ -54,9 +54,9 @@ LoginForm.propTypes = {
 
 LoginForm.defaultProps = {
   isLoginPending: false,
-  loginError: '',
-  email: '',
-  password: '',
+  loginError: "",
+  email: "",
+  password: "",
 };
 
 export default LoginForm;

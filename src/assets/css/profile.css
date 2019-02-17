@@ -1,0 +1,48 @@
+.img-profile{
+    max-width: 50%;
+    border-radius: 50%;
+}
+
+.col-profile .img-profile{ padding-left: 3%; }
+
+.container-fluid{
+    flex-flow: row wrap;
+    justify-content:space-between;
+}
+
+.row-top{
+    padding: 8% 0 3% 0;
+}
+
+.info-group{ padding-bottom: 4%; }
+
+.form-group, .info-group label{
+  font-weight: bold;
+  font-size: 20px;
+  color: #3d3e5d;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2A66BA;
+    border-color: #2A66BA;
+}
+
+a { color: #2A66BA; }
+
+.span-edit-button{
+    float: right;
+    margin: -2% 2% 5% 0;
+}
+
+.tab-container{
+    min-height:320px;
+}
+
+@media screen and (max-width:600px){
+    .container {
+      flex-direction:column
+    }
+    .first{ order: 2; }
+    .second{ order: 1; }
+}

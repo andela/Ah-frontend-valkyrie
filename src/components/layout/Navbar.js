@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import store from '../../store/index';
-import Logo from '../../assets/images/logo.png';
-import Modal from '../common/Modal';
-import Login from '../auth/Login';
-import './styles/Navbar.css';
-import profileImage from '../../assets/images/profile.png';
-import logout from '../../actions/index';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import store from "../../store/index";
+import Logo from "../../assets/images/logo.png";
+import Modal from "../common/Modal";
+import Login from "../auth/Login";
+import "./styles/Navbar.css";
+import profileImage from "../../assets/images/img_avatar.png";
+import logout from "../../actions/index";
 
 class Navbar extends Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {};
-    this.logoutHandler = this.logoutHandler.bind( this );
+    this.logoutHandler = this.logoutHandler.bind(this);
   }
 
   logoutHandler() {
     this.props.logout();
-    window.location.href = '/';
+    window.location.href = "/";
   }
 
   render() {
@@ -29,7 +29,7 @@ class Navbar extends Component {
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container">
             <Link className="navbar-brand" to="/">
-              <img src={ Logo } alt="logo" height="32" width="32" />
+              <img src={Logo} alt="logo" height="32" width="32" />
               <strong className="text-white">&nbsp; AUTHORS HAVEN </strong>
             </Link>
             <button
@@ -55,9 +55,9 @@ class Navbar extends Component {
                   <li>
                     <div className="dropdown" id="profileImage">
                       <button className="btn btn-link dropdownToggle" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src={ profileImage } className="profile-image" alt="Profile" />
+                        <img src={profileImage} className="profile-image" alt="Profile" />
                       </button>
-                      <DropDownMenu clicked={ this.logoutHandler } />
+                      <DropDownMenu clicked={this.logoutHandler} />
                     </div>
                   </li>
                 </ul>
@@ -74,14 +74,14 @@ class Navbar extends Component {
     );
   }
 }
-const DropDownMenu = ( { clicked } ) => (
+const DropDownMenu = ({ clicked }) => (
   <div className="dropdown-menu" aria-labelledby="dropdownMenu">
-    <button className="dropdown-item" type="button">My profile</button>
+    <a href="/users/dashboard"><button className="dropdown-item" type="button">My profile</button></a>
     <button className="dropdown-item" type="button">Write article</button>
     <button className="dropdown-item" type="button">My bookmarks</button>
     <button className="dropdown-item" type="button">My favorites</button>
     <hr />
-    <button className="dropdown-item" type="button" onClick={ clicked }>Logout</button>
+    <button className="dropdown-item" type="button" onClick={clicked}>Logout</button>
   </div>
 );
 
@@ -105,12 +105,12 @@ const NavbarLink = () => (
   </ul>
 );
 
-Navbar.propTypes = ( {
+Navbar.propTypes = ({
   logout: PropTypes.func.isRequired,
-} );
-DropDownMenu.propTypes = ( {
+});
+DropDownMenu.propTypes = ({
   clicked: PropTypes.func.isRequired,
-} );
-const mapStateToProps = state => ( { logout: state.logout } );
+});
+const mapStateToProps = state => ({ logout: state.logout });
 
-export default connect( mapStateToProps, { logout } )( Navbar );
+export default connect(mapStateToProps, { logout })(Navbar);

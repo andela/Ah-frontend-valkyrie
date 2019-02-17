@@ -1,8 +1,8 @@
-import { loginSuccess } from './loginActions';
+import { loginSuccess } from "./loginActions";
 
-const logout = () => ( dispatch ) => {
+const logout = () => (dispatch) => {
   localStorage.clear();
-  dispatch( loginSuccess( {} ) );
+  dispatch(loginSuccess({}));
 };
 
 export default logout;

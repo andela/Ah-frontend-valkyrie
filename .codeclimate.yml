@@ -37,3 +37,7 @@ exclude_paths:
   - lib/**/*
   - node_modules/**/*
   - test/**/*
+  - tests/**/*
+  - '**/test/'
+  - '**/tests/'
+  - '**/*.test.js'

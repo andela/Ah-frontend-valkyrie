@@ -8,6 +8,7 @@ import Landing from "./components/layout/Landing";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import { loginSuccess, setCurrentUser } from "./actions/loginActions";
+import ProfileDashboard from "./components/profile/ProfileDashboard";
 
 if (localStorage.auth_token) {
   const userData = jwt_decode(localStorage.auth_token);
@@ -19,8 +20,9 @@ const App = () => (
     <div className="App">
       <Navbar />
       <Route exact path="/" component={Landing} />
-      <Route path="/users/login" component={Landing} />
+      <Route path="/users/login" component={Login} />
       <Route path="/users/register" component={Register} />
+      <Route path="/users/dashboard" component={ProfileDashboard} />
     </div>
   </Router>
 );
