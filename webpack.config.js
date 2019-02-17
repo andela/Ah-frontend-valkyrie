@@ -1,48 +1,48 @@
-const path = require( 'path' );
-const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    path: path.resolve( __dirname, 'dist' ),
-    filename: 'main.js',
-    publicPath: '/',
+    path: path.resolve(__dirname, "dist"),
+    filename: "main.js",
+    publicPath: "/",
   },
-  resolve: { extensions: [ '.js', '.jsx' ] },
+  resolve: { extensions: [".js", ".jsx"] },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
         },
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: 'html-loader',
+            loader: "html-loader",
           },
         ],
       },
       {
         test: /\.scss$/,
-        loaders: [ 'style-loader', 'css-loader', 'sass-loader' ],
+        loaders: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.css$/,
-        loaders: [ 'style-loader', 'css-loader' ],
+        loaders: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|jp(e*)g|svg|jpg)$/,
-        use: [ {
-          loader: 'url-loader',
+        use: [{
+          loader: "url-loader",
           options: {
             limit: 8000, // Convert images < 8kb to base64 strings
-            name: 'images/[hash]-[name].[ext]',
+            name: "images/[hash]-[name].[ext]",
           },
-        } ],
+        }],
       },
     ],
   },
@@ -50,9 +50,9 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    new HtmlWebPackPlugin( {
-      template: './src/index.html',
-      filename: './index.html',
-    } ),
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html",
+    }),
   ],
 };

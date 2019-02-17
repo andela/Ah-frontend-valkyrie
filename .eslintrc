@@ -5,19 +5,23 @@
     "node": true,
     "mocha": true
   },
-  "extends": ["airbnb", "prettier"],
+  "extends": [
+    "airbnb",
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/recommended"],
   "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": true
-  },
+  "plugins": ["react", "import"],
   "rules": {
+    "strict": 0,
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
     "function-paren-newline": "off",
     "react/no-children-prop": 0,
+    "import/no-named-as-default": 0,
     "no-nested-ternary": 0,
     "no-unused-expressions": [
       "error",
@@ -36,5 +40,10 @@
         ]
       }
     ]
+  },
+  "settings": {
+    "react": {
+      "version": "latest"
+    }
   }
 }
