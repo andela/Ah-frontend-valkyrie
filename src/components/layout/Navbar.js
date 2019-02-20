@@ -71,14 +71,14 @@ class Navbar extends Component {
         <Modal>
           <Login />
         </Modal>
-      </div>    
+      </div>
     );
   }
 }
 const DropDownMenu = ({ clicked }) => (
   <div className="dropdown-menu" aria-labelledby="dropdownMenu">
-    <a href="/users/dashboard"><button className="dropdown-item" type="button">My profile</button></a>
-    <button className="dropdown-item" type="button">Write article</button>
+    <Link to="/users/dashboard" className="dropdown-item">My profile</Link>
+    <Link to="/article/create" className="dropdown-item">Write article</Link>
     <button className="dropdown-item" type="button">My bookmarks</button>
     <button className="dropdown-item" type="button">My favorites</button>
     <hr />

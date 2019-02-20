@@ -31,13 +31,16 @@ checks:
   identical-code:
     config:
       threshold: 20
-exclude_paths:
+exclude_patterns:
   - coverage/**/*
   - es/**/*
   - lib/**/*
   - node_modules/**/*
   - test/**/*
   - tests/**/*
+<<<<<<< HEAD
   - '**/test/'
   - '**/tests/'
   - '**/*.test.js'
+=======
+>>>>>>> Ft(crud): create Article

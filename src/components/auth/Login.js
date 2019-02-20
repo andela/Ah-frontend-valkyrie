@@ -82,6 +82,10 @@ Login.propTypes = ( {
   login: PropTypes.func.isRequired,
 } );
 
+Login.defaultProps = {
+  loginError: '',
+};
+
 const mapStateToProps = state => ( {
   isLoginPending: state.loginReducer.isLoginPending,
   loginSuccess: state.loginReducer.loginSuccess,
