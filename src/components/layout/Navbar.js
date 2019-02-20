@@ -83,18 +83,10 @@ class Navbar extends Component {
 }
 const DropDownMenu = ({ clicked }) => (
   <div className="dropdown-menu" aria-labelledby="dropdownMenu">
-    <Link to="/users/dashboard" className="dropdown-item">
-      My profile
-    </Link>
-    <Link to="/article/create" className="dropdown-item">
-      Write article
-    </Link>
-    <button className="dropdown-item" type="button">
-      My bookmarks
-    </button>
-    <button className="dropdown-item" type="button">
-      My favorites
-    </button>
+    <button className="dropdown-item" type="button">My profile</button>
+    <Link to="/article/create" className="dropdown-item">Write article</Link>
+    <button className="dropdown-item" type="button">My bookmarks</button>
+    <button className="dropdown-item" type="button">My favorites</button>
     <hr />
     <button className="dropdown-item" type="button" onClick={clicked}>
       Logout

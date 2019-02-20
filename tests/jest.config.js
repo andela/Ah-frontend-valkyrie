@@ -38,9 +38,15 @@ module.exports = {
   verbose: true,
 
   moduleNameMapper: {
+<<<<<<< HEAD
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$":
             "<rootDir>/src/fileMock.js",
     "\\.(css|scss)$": "<rootDir>/src/styleMock.js",
   },
 
+=======
+    "\\.('jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$": '<rootDir>/src/fileMock.js',
+    '\\.(css|scss)$': '<rootDir>/src/styleMock.js',
+  },
+>>>>>>> Ft(crud): create Article
 };

@@ -92,7 +92,7 @@ export const deleteArticle = slug => ( dispatch ) => {
   console.log( 'actions' );
   api.removeResource( `${ articleUrl }${ slug }/` )
     .then( ( res ) => {
-      dispatch( deleteArticleSuccess( slug ) );
+      dispatch( deleteArticleSuccess( 'success' ) );
     } )
     .catch( ( err ) => {
       console.log( err.response );
