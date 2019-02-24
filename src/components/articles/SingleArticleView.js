@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Parser from 'html-react-parser';
 import { connect } from 'react-redux';
+import CommentList from '../comments/CommentList';
+import CreateComment from '../comments/CreateComment';
+
 
 export const SingleArticleView = props => (
   <Fragment>
@@ -12,7 +15,7 @@ export const SingleArticleView = props => (
           <Link to="/">Home</Link>
         </li>
         { props.authUser.isAuthenticated
-        && props.authUser.username == props.article.author.username ? (
+        && props.authUser.user.username == props.article.author.username ? (
           <Fragment>
             <li className="breadcrumb-item">
               <Link
@@ -80,7 +83,16 @@ export const SingleArticleView = props => (
             &nbsp; &nbsp; &nbsp;
         <i className="fas fa-share-alt text-primary" />
       </p>
-    </div>
+      <hr />
+      { props.authUser.isAuthenticated ? (
+        <CreateComment articleSlug={ props.article.slug }/>
+      ) : (
+        <Fragment>
+          <strong className="text-danger"><i className="fa fa-exclamation-triangle" /> You need to login in order to comment on this article!</strong>
+        </Fragment>
+      )}
+      <CommentList articleSlug={ props.article.slug }/>
+  </div>
   </Fragment>
 );
 

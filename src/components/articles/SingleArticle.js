@@ -7,7 +7,7 @@ import { fetchSingleArticle, deleteArticle } from '../../actions/articleActions'
 import SingleArticleView from './SingleArticleView';
 import Sidebar from '../layout/Sidebar';
 import Footer from '../layout/Footer';
-import isEmpty from '../utils/isEmpty';
+import isEmpty from '../../validations/isEmpty';
 import Loader from "../common/Loader";
 
 export class SingleArticle extends Component {

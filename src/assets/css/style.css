@@ -17,6 +17,10 @@ img {
   border-bottom: 2px solid #fff;
 }
 
+.comment-text {
+  color: #3d405b;
+}
+
 .banner img {
   width: 100%;
 }

@@ -7,7 +7,7 @@ import Sidebar from '../layout/Sidebar';
 import Footer from '../layout/Footer';
 import { fetchSingleArticle, updateArticle } from '../../actions/articleActions';
 import UpdateArticleForm from './UpdateArticleForm';
-import isEmpty from '../utils/isEmpty';
+import isEmpty from '../../validations/isEmpty';
 import Loader from "../common/Loader";
 
 export class UpdateArticle extends Component {

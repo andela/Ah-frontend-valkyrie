@@ -19,13 +19,17 @@ describe( 'Test single article component', () => {
             count: 0,
         },
         author: {
-            username: 'testUser',
+          user: {
+            username: 'testUser'
+          },
         },
         tagList: ['tag1', 'tag2'],
     },
     authUser: {
         isAuthenticated: true,
-        username: 'testUser',
+        user: {
+          username: 'testUser'
+        },
     },
     slug: 'some-slug',
   };

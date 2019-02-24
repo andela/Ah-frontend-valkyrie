@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import store from "./store/index";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
+import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import ProfileDashboard from "./components/profile/ProfileDashboard";
 import { loginSuccess } from "./actions/loginActions";
@@ -39,7 +40,7 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Route exact path="/" component={Landing} />
-          <Route path="/users/login" component={Landing} />
+          <Route path="/users/login" component={Login} />
           <Route path="/users/register" component={Register} />
           <Route path="/reset_password" component={ResetPassword} />
           <Route path="/change_password/:token" component={ChangePassword} />
