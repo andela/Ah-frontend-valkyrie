@@ -80,6 +80,7 @@ Container.propTypes = {
 Login.propTypes = ( {
   isLoginPending: PropTypes.bool.isRequired,
   loginError: PropTypes.string,
+  login: PropTypes.func.isRequired,
 } );
 
 Login.defaultProps = {
@@ -87,7 +88,6 @@ Login.defaultProps = {
 };
 
 const mapStateToProps = state => ( {
-  login: PropTypes.func.isRequired,
   isLoginPending: state.loginReducer.isLoginPending,
   loginSuccess: state.loginReducer.loginSuccess,
   loginError: state.loginReducer.loginError,

@@ -30,10 +30,10 @@ export const addArticlesFailure = errors => (
   }
 );
 
-export const deleteArticleSuccess = slug => (
+export const deleteArticleSuccess = message => (
   {
     type: 'DELETE_ARTICLE',
-    payload: slug,
+    payload: message,
   }
 );
 

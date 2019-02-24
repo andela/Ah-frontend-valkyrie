@@ -27,6 +27,7 @@ const getConfig = ( method ) => {
     headers: {
       Accept: 'application/json',
     },
+    mode: 'no-cors',
   };
   return config;
 };

@@ -34,6 +34,8 @@
     "email-validator": "^2.0.4",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "expect": "^24.1.0",
     "express": "^4.16.4",
     "express-favicon": "^2.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -64,10 +66,15 @@
     "react-scripts": "^2.1.5",
     "react-test-renderer": "^16.8.1",
     "react-toastify": "^4.5.2",
+    "react-toasts": "^3.0.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0",
+    "sass-loader": "^7.1.0",
+    "sfcookies": "^1.0.2",
+    "sinon": "^7.2.4",
+    "style-loader": "^0.23.1",
     "typescript": "^3.3.3",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
@@ -99,18 +106,19 @@
     "sass-loader": "^7.1.0",
     "sinon": "^7.2.4",
     "style-loader": "^0.23.1",
+    "react-addons-test-utils": "^15.6.2",
     "url-loader": "^1.1.2",
     "webpack-dev-server": "^3.1.14"
   },
   "jest": {
+    "testEnvironment": "jsdom",
     "moduleNameMapper": {
       "\\.('jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$": "<rootDir>/src/fileMock.js",
       "\\.(css|scss)$": "<rootDir>/src/styleMock.js"
     },
     "setupFilesAfterEnv": [
       "<rootDir>/tests/enzyme.config.js"
-    ],
-    "testEnvironment": "jsdom"
+    ]
   },
   "heroku-run-build-script": true
 }

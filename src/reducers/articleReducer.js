@@ -11,7 +11,6 @@ const articleReducer = ( state = initialState, action ) => {
       );
 
     case 'FETCH_ARTICLES_ERROR':
-    console.log(action.payload);
       return Object.assign(
         {}, state, { errors: action.payload },
     );
@@ -39,10 +38,6 @@ const articleReducer = ( state = initialState, action ) => {
     }
 
     case 'EDIT_ARTICLE_SUCCESS': {
-      console.log( state.articles );
-      // const updatedArticle = state.articles.map(
-      //   article => ( article.id !== +action.payload.id ? article : action.payload ),
-      // );
       return Object.assign(
         {}, state, { articles: state.articles },
       );
