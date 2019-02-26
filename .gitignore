@@ -11,8 +11,4 @@ coverage/
 dist/
 .idea/workspace.xml
 .idea
-<<<<<<< HEAD
 .env
-=======
-__snapshots__/
->>>>>>> Ft(crud): create Article
