@@ -49,10 +49,12 @@ describe("login async actions", () => {
         response: user,
       });
     });
-    const expectedAction = [{
-      type: actiontypes.SET_LOGIN_SUCCESS,
-      user,
-    }];
+    const expectedAction = [
+      {
+        type: actiontypes.SET_LOGIN_SUCCESS,
+        user,
+      },
+    ];
     const store = mockStore({});
     store.dispatch(actiontypes.login()).then(() => {
       expect(store.getActions()).toEqual(expectedAction);

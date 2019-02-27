@@ -37,8 +37,11 @@ describe("login reducer", () => {
       },
     };
     const expectedState = {
-      email: "frank.atukunda@andela.com",
-      password: "frankie123@",
+      isAuthenticated: true,
+      user: {
+        email: "frank.atukunda@andela.com",
+        password: "frankie123@",
+      },
     };
 
     expect(loginReducer({}, action)).toEqual(expectedState);

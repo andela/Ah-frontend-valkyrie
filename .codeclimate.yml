@@ -38,9 +38,6 @@ exclude_patterns:
   - node_modules/**/*
   - test/**/*
   - tests/**/*
-<<<<<<< HEAD
-  - '**/test/'
-  - '**/tests/'
-  - '**/*.test.js'
-=======
->>>>>>> Ft(crud): create Article
+  - "**/test/"
+  - "**/tests/"
+  - "**/*.test.js"

@@ -1,8 +1,12 @@
 import { loginSuccess } from "./loginActions";
+import { GET_ERRORS } from "./types";
 
-const logout = () => (dispatch) => {
+export const logout = () => (dispatch) => {
   localStorage.clear();
   dispatch(loginSuccess({}));
 };
 
-export default logout;
+export const getErrors = error => ({
+  type: GET_ERRORS,
+  payload: error,
+});

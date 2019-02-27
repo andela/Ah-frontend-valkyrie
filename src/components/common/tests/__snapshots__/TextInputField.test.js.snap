@@ -16,7 +16,6 @@ exports[`TextInputField component it matches the snapshot 1`] = `
     </span>
     <input
       className=""
-      defaultValue=""
       label=""
       name=""
       onChange={null}

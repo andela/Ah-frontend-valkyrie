@@ -25,6 +25,7 @@ export class ProfileDashboard extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onClickEdit = this.onClickEdit.bind(this);
     this.onClickClose = this.onClickClose.bind(this);
+    // this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
@@ -67,14 +68,14 @@ export class ProfileDashboard extends Component {
     this.props.updateProfile(newProfile, store.getState().loginReducer.id);
   }
 
-
   render() {
     const { error, loading, profile } = this.props;
+    console.log(this.state.firstName);
 
     if (error) {
       return (
         <div className="alert alert-warning" role="alert">
-          { error.message }
+          {error.message}
         </div>
       );
     }
@@ -103,11 +104,16 @@ export class ProfileDashboard extends Component {
               profile={profile}
               onSubmit={this.onSubmit}
               changed={changelistener(this)}
+              firstName={this.state.firstName}
+              lastName={this.state.lastName}
+              username={this.state.username}
+              bio={this.state.bio}
             />
-          ) : <ProfileTabs />}
+          ) : (
+            <ProfileTabs />
+          )}
 
-          { /* end row */ }
-
+          {/* end row */}
         </div>
 
         <Footer />
@@ -127,4 +133,7 @@ const mapStateToProps = state => ({
   error: state.profile.error,
 });
 
-export default connect(mapStateToProps, { fetchProfile, updateProfile })(ProfileDashboard);
+export default connect(
+  mapStateToProps,
+  { fetchProfile, updateProfile },
+)(ProfileDashboard);

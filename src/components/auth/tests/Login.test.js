@@ -12,9 +12,11 @@ const storeFake = (state, action) => ({
 });
 
 const store = storeFake({
-  loginReducer:
-  {
-    isLoginPending: false, loginSuccess: {}, loginError: "", isAuthenticated: false,
+  loginReducer: {
+    isLoginPending: false,
+    loginSuccess: {},
+    loginError: "",
+    isAuthenticated: false,
   },
 });
 
