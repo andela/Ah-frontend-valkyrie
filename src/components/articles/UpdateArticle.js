@@ -14,10 +14,10 @@ export class UpdateArticle extends Component {
   constructor( props ) {
     super( props );
     this.state = {
-      title: '',
-      description: '',
-      body: '',
-      tagList: '',
+      title: "",
+      description: "",
+      body: "",
+      tagList: "",
       article: {},
       triggerUpdate: false,
       isLoading: true,
@@ -26,17 +26,17 @@ export class UpdateArticle extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchSingleArticle( this.props.match.params.slug );
+    this.props.fetchSingleArticle(this.props.match.params.slug);
   }
 
-  componentWillReceiveProps( nextProps ) {
+  componentWillReceiveProps(nextProps) {
     const { article } = nextProps.article;
-    if ( article ) {
-      this.setState( { ...article } );
-      this.setState( { article } );
+    if (article) {
+      this.setState({ ...article });
+      this.setState({ article });
     }
-    if ( this.state.triggerUpdate && nextProps.updatedArticle.articles.article ) {
-      toast.success( 'Article updated successfully' );
+    if (this.state.triggerUpdate && nextProps.updatedArticle.articles.article) {
+      toast.success("Article updated successfully");
     }
     this.setState( { isLoading: false } );
   }
@@ -48,7 +48,7 @@ export class UpdateArticle extends Component {
   handleEditor = event => {
     this.setState( {
       body: event,
-    } );
+    });
   }
 
   handleOnSubmit = event => {
@@ -58,12 +58,12 @@ export class UpdateArticle extends Component {
       description: this.state.description,
       body: this.state.body,
       tagList: this.state.tags
-        ? this.state.tags.split( ',' ) : this.state.article.tagList,
+        ? this.state.tags.split(",") : this.state.article.tagList,
     };
-    this.setState( {
+    this.setState({
       triggerUpdate: true,
-    } );
-    this.props.updateArticle( this.state.article.slug, article );
+    });
+    this.props.updateArticle(this.state.article.slug, article);
   }
 
   render() {
@@ -120,13 +120,13 @@ export class UpdateArticle extends Component {
   }
 }
 
-const mapStateToProps = state => ( {
+const mapStateToProps = state => ({
   article: state.articles.articles,
   updatedArticle: state.articles,
   articleError: state.articles.errors,
   authUser: state.loginReducer,
-} );
+});
 
 export default connect(
   mapStateToProps, { updateArticle, fetchSingleArticle },
-)( UpdateArticle );
+)(UpdateArticle);

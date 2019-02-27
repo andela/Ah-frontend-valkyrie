@@ -42,4 +42,3 @@ module.exports = {
     '\\.(css|scss)$': '<rootDir>/src/styleMock.js',
   },
 };
-
