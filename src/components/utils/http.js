@@ -1,7 +1,6 @@
-import React from 'react';
 import axios from 'axios';
 
-const baseUrl = 'https://ah-backend-valkyrie-staging.herokuapp.com/api/v1/';
+const baseUrl = `${process.env.HOST}/`;
 
 const putPostConfig = ( method, body = null ) => {
   const upperCasedMethod = method.toUpperCase();

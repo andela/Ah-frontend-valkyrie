@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Dummy from '../../assets/images/dummy.png';
 
-const SingleArticleItem = props => (
+export const SingleArticleItem = props => (
   <Fragment>
     <div className="card mb-3">
       <div className="row no-gutters">

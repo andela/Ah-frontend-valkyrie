@@ -9,7 +9,7 @@ import Footer from '../layout/Footer';
 import { addArticle } from '../../actions/articleActions';
 import CreateArticleForm from './CreateArticleForm';
 
-class CreateArticle extends Component {
+export class CreateArticle extends Component {
   constructor( props ) {
     super( props );
     this.state = {
@@ -19,6 +19,8 @@ class CreateArticle extends Component {
       tags: '',
       articleError: '',
       articleCreated: false,
+      createError: false,
+      otherError: false,
     };
 
     this.onChangeHandler = this.onChangeHandler.bind( this );
@@ -48,13 +50,14 @@ class CreateArticle extends Component {
   }
 
   componentWillReceiveProps( nextProps ) {
-    const article = nextProps.article.shift();
-    console.log( article );
+    const article = nextProps.article.articles;
     if ( article ) {
       this.props.history.push( `/articles/${ article.slug }` );
     } else if ( nextProps.articleError ) {
+      this.setState({createError: true});
       toast.info( 'Error while saving your data' );
     } else {
+      this.setState({otherError: true});
       toast.warning( 'Error while saving your data' );
     }
   }
@@ -99,7 +102,7 @@ class CreateArticle extends Component {
 }
 
 const mapStateToProps = state => ( {
-  article: state.articles.articles,
+  article: state.articles,
   articleError: state.articles.errors,
   authUser: state.loginReducer,
 } );
