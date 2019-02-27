@@ -3,14 +3,17 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { login } from "../../actions/loginActions";
 import "./styles/Login.css";
-import Button from "../common/Button";
 import LoginForm from "./login/LoginForm";
 import { changelistener } from "../../../utils/globals";
+import SocialAuth from "./social/SocialAuth";
 
-class Login extends Component {
+export class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      email: "",
+      password: "",
+    };
   }
 
   onSubmit = ( event ) => {
@@ -34,9 +37,7 @@ class Login extends Component {
           loginError={loginError}
         />
         <h4 className="text-center">Sign in with</h4>
-        <Button text="Google" icon="fab fa-google" className="btn btn-danger" />
-        <Button text="Twitter" icon="fab fa-twitter" className="btn twitter-btn" />
-        <Button text="Facebook" icon="fab fa-facebook-f" className="btn facebook-btn" />
+        <SocialAuth />
         <ResetPasswordFunction />
       </Container>
     );

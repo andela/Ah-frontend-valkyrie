@@ -42,7 +42,7 @@ const registerForm = ({
       error={errors.password && errors.password[0]}
     />
     <div className="alert alert-danger" id="alert-2" role="alert">
-        passwords don't match
+      passwords don't match
     </div>
     <input
       type="submit"
@@ -51,7 +51,6 @@ const registerForm = ({
       id="submit_btn"
       disabled={disabled}
     />
-    <h4 className="text-center">Signup with</h4>
   </form>
 );
 

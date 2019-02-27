@@ -2,7 +2,9 @@ import React from "react";
 import TextInputField from "../common/TextInputField";
 import store from "../../store";
 
-const EditProfileForm = ({ profile, onSubmit, changed }) => (
+const EditProfileForm = ({
+  profile, onSubmit, changed, firstName, lastName, username, bio,
+}) => (
   <div className="row">
     <div className="col-sm-8 first">
       <h3>Edit Profile</h3>
@@ -10,10 +12,10 @@ const EditProfileForm = ({ profile, onSubmit, changed }) => (
       <form onSubmit={onSubmit} method="post">
         <TextInputField
           name="firstName"
-          placeholder="John"
+          placeholder="First Name"
           type="text"
           label="First Name"
-          value={profile.first_name}
+          value={firstName}
           classname="form-control form-control-lg"
           icon="fa fa-user"
           changed={changed}
@@ -21,10 +23,10 @@ const EditProfileForm = ({ profile, onSubmit, changed }) => (
 
         <TextInputField
           name="lastName"
-          placeholder="Doe"
+          placeholder="Last Name"
           type="text"
           label="Last Name"
-          value={profile.last_name}
+          value={lastName}
           classname="form-control form-control-lg"
           icon="fa fa-user"
           changed={changed}
@@ -32,10 +34,10 @@ const EditProfileForm = ({ profile, onSubmit, changed }) => (
 
         <TextInputField
           name="username"
-          placeholder="johndoe"
+          placeholder="Username"
           type="text"
           label="Username"
-          value={profile.username}
+          value={username}
           classname="form-control form-control-lg"
           icon="fa fa-user"
           changed={changed}
@@ -43,10 +45,19 @@ const EditProfileForm = ({ profile, onSubmit, changed }) => (
 
         <div className="form-group">
           <label htmlFor="exampleFormControlTextarea1">Bio</label>
-          <textarea className="form-control" id="bio" rows={3} name="bio" defaultValue={profile.bio} onChange={changed} />
+          <textarea
+            className="form-control"
+            id="bio"
+            rows={3}
+            name="bio"
+            value={bio}
+            onChange={changed}
+          />
         </div>
 
-        <button type="submit" className="btn btn-primary" id="submit-btn">Update Profile</button>
+        <button type="submit" className="btn btn-primary" id="submit-btn">
+          Update Profile
+        </button>
       </form>
     </div>
 
@@ -56,13 +67,13 @@ const EditProfileForm = ({ profile, onSubmit, changed }) => (
       <div className="info-group">
         <label htmlFor="firstName">First Name</label>
         <br />
-        <span>{ profile.first_name }</span>
+        <span>{profile.first_name}</span>
       </div>
 
       <div className="info-group">
         <label htmlFor="lastName">Last Name</label>
         <br />
-        <span>{ profile.last_name }</span>
+        <span>{profile.last_name}</span>
       </div>
 
       <div className="info-group">
@@ -70,7 +81,7 @@ const EditProfileForm = ({ profile, onSubmit, changed }) => (
         <br />
         <span>
           {" "}
-          { store.getState().loginReducer.email }
+          {store.getState().loginReducer.email}
           {" "}
         </span>
       </div>
@@ -78,12 +89,10 @@ const EditProfileForm = ({ profile, onSubmit, changed }) => (
       <div className="info-group">
         <label htmlFor="username">Username</label>
         <br />
-        <span>{ profile.username }</span>
+        <span>{profile.username}</span>
       </div>
-
     </div>
   </div>
 );
-
 
 export default EditProfileForm;

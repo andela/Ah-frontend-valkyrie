@@ -6,16 +6,22 @@ export const SET_LOGIN_SUCCESS = "SET_LOGIN_SUCCESS";
 export const SET_LOGIN_ERROR = "SET_LOGIN_ERROR";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
-export const setLoginPending = isLoginPending => ({ type: SET_LOGIN_PENDING, isLoginPending });
+const host = process.env.HOST;
+
+export const setLoginPending = isLoginPending => ({
+  type: SET_LOGIN_PENDING,
+  isLoginPending,
+});
 
 export const loginSuccess = user => ({ type: SET_LOGIN_SUCCESS, user });
 
-export const setLoginError = loginError => ({ type: SET_LOGIN_ERROR, loginError });
-
-export const setCurrentUser = isAuthenticated => ({ type: SET_CURRENT_USER, isAuthenticated });
+export const setLoginError = loginError => ({
+  type: SET_LOGIN_ERROR,
+  loginError,
+});
 
 export const login = (email, password) => (dispatch) => {
-  const url = "https://ah-backend-valkyrie-staging.herokuapp.com/api/v1/users/login/";
+  const url = `${host}/users/login/`;
   const data = {
     user: {
       email,
@@ -33,7 +39,6 @@ export const login = (email, password) => (dispatch) => {
   dispatch(setLoginPending(true));
   return axios(url, requestData)
     .then((response) => {
-      dispatch(setCurrentUser(true));
       const { token } = response.data.user;
       localStorage.setItem("auth_token", token);
       const decodedData = jwt_decode(token);

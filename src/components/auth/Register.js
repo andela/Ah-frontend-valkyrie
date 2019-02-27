@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-state */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -6,7 +5,6 @@ import { signUp } from "../../actions/SignupAction";
 import RegisterForm from "./RegisterForm";
 import "./styles/RegisterCSS.css";
 import "./styles/Login.css";
-import Button from "../common/Button";
 
 class Register extends Component {
   constructor(props) {
@@ -27,6 +25,9 @@ class Register extends Component {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
+    if (nextProps.isAuthenticated) {
+      this.props.history.push("/");
+    }
   }
 
   onChange = (e) => {
@@ -41,7 +42,6 @@ class Register extends Component {
       }
     }
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
   };
 
   onSubmit(e) {
@@ -55,8 +55,7 @@ class Register extends Component {
   }
 
   render() {
-    const { errors } = this.props;
-    console.log(errors);
+    const { errors } = this.state;
     const none = "none";
     const block = "block";
 
@@ -70,30 +69,13 @@ class Register extends Component {
         />
         <div className="row" id="reg_div" style={{ display: block }}>
           <div className="col-md-6 m-auto">
-            <h4 className="text-center">Create your account</h4>
+            <h4 className="text-center mt-5 mb-4">Create your account</h4>
             <RegisterForm
               onSubmit={this.onSubmit}
               onChange={this.onChange}
               errors={errors}
               disabled={this.state.disabled}
             />
-            <div className="social-buttons">
-              <Button
-                text="Google"
-                icon="fab fa-google"
-                className="btn btn-danger"
-              />
-              <Button
-                text="Twitter"
-                icon="fab fa-twitter"
-                className="btn twitter-btn"
-              />
-              <Button
-                text="Facebook"
-                icon="fab fa-facebook-f"
-                className="btn facebook-btn"
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -101,17 +83,21 @@ class Register extends Component {
   }
 }
 
-const registerForm = () => {};
-
 Register.propTypes = {
   onChange: PropTypes.func,
   onSubmit: PropTypes.func,
   errors: PropTypes.object,
   signUp: PropTypes.func,
+  isAuthenticated: PropTypes.bool,
+};
+
+Register.defaultProps = {
+  isAuthenticated: false,
 };
 
 const mapStateToProps = state => ({
   errors: state.signupReducer.errors,
+  isAuthenticated: state.isAuthenticated,
 });
 
 export default connect(

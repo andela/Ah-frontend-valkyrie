@@ -15,6 +15,10 @@ describe("Edit profile view", () => {
     },
     onSubmit: jest.fn(),
     changed: jest.fn(),
+    username: "test",
+    bio: "",
+    firstName: "Test",
+    lasName: "",
   };
 
   const profile = {

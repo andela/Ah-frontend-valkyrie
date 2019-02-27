@@ -8,8 +8,7 @@ import Modal from "../common/Modal";
 import Login from "../auth/Login";
 import "./styles/Navbar.css";
 import profileImage from "../../assets/images/img_avatar.png";
-import logout from "../../actions/index";
-
+import { logout } from "../../actions/index";
 
 class Navbar extends Component {
   constructor(props) {
@@ -55,7 +54,14 @@ class Navbar extends Component {
                   </li>
                   <li>
                     <div className="dropdown" id="profileImage">
-                      <button className="btn btn-link dropdownToggle" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button
+                        className="btn btn-link dropdownToggle"
+                        type="button"
+                        id=""
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
                         <img src={profileImage} className="profile-image" alt="Profile" />
                       </button>
                       <DropDownMenu clicked={this.logoutHandler} />
@@ -77,20 +83,35 @@ class Navbar extends Component {
 }
 const DropDownMenu = ({ clicked }) => (
   <div className="dropdown-menu" aria-labelledby="dropdownMenu">
-    <Link to="/users/dashboard" className="dropdown-item">My profile</Link>
-    <Link to="/article/create" className="dropdown-item">Write article</Link>
-    <button className="dropdown-item" type="button">My bookmarks</button>
-    <button className="dropdown-item" type="button">My favorites</button>
+    <Link to="/users/dashboard" className="dropdown-item">
+      My profile
+    </Link>
+    <Link to="/article/create" className="dropdown-item">
+      Write article
+    </Link>
+    <button className="dropdown-item" type="button">
+      My bookmarks
+    </button>
+    <button className="dropdown-item" type="button">
+      My favorites
+    </button>
     <hr />
-    <button className="dropdown-item" type="button" onClick={clicked}>Logout</button>
+    <button className="dropdown-item" type="button" onClick={clicked}>
+      Logout
+    </button>
   </div>
 );
 
 const NavbarLink = () => (
   <ul className="navbar-nav ml-auto">
     <li className="nav-item active">
-      <button type="button" className="nav-link btn btn-sm bg-white font-weight-bold mr-2 signIn" data-toggle="modal" data-target="#auth-modal">
-          Sign in
+      <button
+        type="button"
+        className="nav-link btn btn-sm bg-white font-weight-bold mr-2 signIn"
+        data-toggle="modal"
+        data-target="#auth-modal"
+      >
+        Sign in
       </button>
     </li>
     <li className="nav-item">
@@ -100,18 +121,21 @@ const NavbarLink = () => (
         tabIndex="-1"
         aria-disabled="true"
       >
-          Get started
+        Get started
       </Link>
     </li>
   </ul>
 );
 
-Navbar.propTypes = ({
+Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-});
-DropDownMenu.propTypes = ({
+};
+DropDownMenu.propTypes = {
   clicked: PropTypes.func.isRequired,
-});
+};
 const mapStateToProps = state => ({ logout: state.logout });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(
+  mapStateToProps,
+  { logout },
+)(Navbar);

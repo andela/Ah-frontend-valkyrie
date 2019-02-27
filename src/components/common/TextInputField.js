@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TextInputField = ( {
+const TextInputField = ({
   name,
   label,
   type,
@@ -10,8 +10,8 @@ const TextInputField = ( {
   icon,
   changed,
   value,
-  required
-} ) => (
+  required,
+}) => (
   <div className="form-group">
     <div className="input-group">
       <span className="input-group-addon">
@@ -23,15 +23,13 @@ const TextInputField = ( {
         type={type}
         placeholder={placeholder}
         className={classname}
-        defaultValue={value}
         onChange={changed}
         value={value}
         required={required}
       />
-      
     </div>
   </div>
-) ;
+);
 
 TextInputField.propTypes = {
   name: PropTypes.string,

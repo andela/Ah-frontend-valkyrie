@@ -1,6 +1,6 @@
-const path = require( 'path' );
-const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
-const Dotenv = require( 'dotenv-webpack' );
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.js",
@@ -37,13 +37,15 @@ module.exports = {
       },
       {
         test: /\.(png|jp(e*)g|svg|jpg)$/,
-        use: [{
-          loader: "url-loader",
-          options: {
-            limit: 8000, // Convert images < 8kb to base64 strings
-            name: "images/[hash]-[name].[ext]",
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8000, // Convert images < 8kb to base64 strings
+              name: "images/[hash]-[name].[ext]",
+            },
           },
-        }],
+        ],
       },
     ],
   },
@@ -51,12 +53,16 @@ module.exports = {
     historyApiFallback: {
       disableDotRule: true,
     },
+    port: 8080,
   },
   plugins: [
-    new HtmlWebPackPlugin( {
-      template: './src/index.html',
-      filename: './index.html',
-    } ),
-    new Dotenv()
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html",
+    }),
+    new Dotenv({
+      path: "./.env",
+      safe: true,
+    }),
   ],
 };

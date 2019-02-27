@@ -31,13 +31,11 @@ const LoginForm = (props) => {
         required
       />
       <input type="submit" className="btn btn-block mt-4 btn-login" value="Sign in" />
-      {isLoginPending
-        && (
-          <div className="spinner-border text-info" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        )
-      }
+      {isLoginPending && (
+        <div className="spinner-border text-info" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      )}
       {loginError && <Alert className="alert alert-danger">{loginError}</Alert>}
     </form>
   );
@@ -49,7 +47,6 @@ LoginForm.propTypes = {
   email: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
   password: PropTypes.string,
-
 };
 
 LoginForm.defaultProps = {
