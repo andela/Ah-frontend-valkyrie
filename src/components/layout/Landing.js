@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Dummy from '../../assets/images/dummy.png';
-import banner from '../../assets/images/banner.png';
-import Footer from './Footer';
-import Sidebar from './Sidebar';
-import Article from '../articles/Article';
-import Navbar from './Navbar';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import banner from "../../assets/images/banner.png";
+import Footer from "./Footer";
+import "../auth/styles/RegisterCSS.css";
+import Sidebar from "./Sidebar";
+import Article from "../articles/Article";
 
 class Register extends Component {
   constructor(props) {
@@ -14,7 +13,7 @@ class Register extends Component {
   }
 
   render() {
-    const auth_token = localStorage.getItem("auth_token");
+    const authToken = localStorage.getItem("auth_token");
     let hide;
     return (
       <div>
@@ -25,7 +24,7 @@ class Register extends Component {
               A social platform for the creative at heart - Bringing together a
               community of like-minded authors.
             </h1>
-            {auth_token !== null ? (hide = true) : ""}
+            {authToken !== null ? (hide = true) : ""}
             <Link
               className="btn btn-lg bg-white font-weight-bold mt-5"
               hidden={hide}

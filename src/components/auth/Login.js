@@ -16,10 +16,10 @@ export class Login extends Component {
     };
   }
 
-  onSubmit = ( event ) => {
+  onSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    this.props.login( email, password );
+    this.props.login(email, password);
   }
 
 
@@ -66,7 +66,7 @@ export const ResetPasswordFunction = () => (
     <div className="col-md-6">
       <p className="text-center mt-2">
         Forgot password?
-        {' '}
+        {" "}
         <a href="/reset_password">Reset</a>
       </p>
     </div>
@@ -77,17 +77,17 @@ Container.propTypes = {
   children: PropTypes.instanceOf(Array).isRequired,
 };
 
-Login.propTypes = ( {
+Login.propTypes = ({
   isLoginPending: PropTypes.bool.isRequired,
   loginError: PropTypes.string,
   login: PropTypes.func.isRequired,
-} );
+});
 
 Login.defaultProps = {
-  loginError: '',
+  loginError: "",
 };
 
-const mapStateToProps = state => ( {
+const mapStateToProps = state => ({
   isLoginPending: state.loginReducer.isLoginPending,
   loginSuccess: state.loginReducer.loginSuccess,
   loginError: state.loginReducer.loginError,

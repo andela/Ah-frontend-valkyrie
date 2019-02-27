@@ -1,18 +1,17 @@
-import React from 'react';
-import expect from 'expect';
-import { shallow } from 'enzyme';
-import SearchArticleForm from '../SearchArticleForm';
+import React from "react";
+import expect from "expect";
+import { shallow } from "enzyme";
+import SearchArticleForm from "../SearchArticleForm";
 
-describe( 'Test create article form component', () => {
+describe("Test create article form component", () => {
   const props = {
     onChangeHandler: jest.fn(),
     onSubmitHandler: jest.fn(),
   };
 
-  const wrapper = shallow( <SearchArticleForm { ...props } /> );
+  const wrapper = shallow(<SearchArticleForm {...props} />);
 
-  it( 'Matches the snapshot', () => {
-    expect( wrapper ).toMatchSnapshot();
-  } );
-  
-} );
+  it("Matches the snapshot", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+});

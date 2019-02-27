@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// eslint-disable-next-line camelcase
 import jwt_decode from "jwt-decode";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import store from "./store/index";
