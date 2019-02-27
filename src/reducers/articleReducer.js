@@ -10,9 +10,15 @@ const articleReducer = ( state = initialState, action ) => {
         {}, state, { articles: action.payload },
       );
 
+    case 'FETCH_ARTICLES_ERROR':
+    console.log(action.payload);
+      return Object.assign(
+        {}, state, { errors: action.payload },
+    );
+
     case 'ADD_ARTICLE':
       return Object.assign(
-        {}, { articles: [ ...state.articles, action.payload ] },
+        {}, { articles: action.payload },
       );
 
     case 'ADD_ARTICLE_ERROR':

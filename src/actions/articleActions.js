@@ -64,7 +64,7 @@ export const fetchArticles = () => ( dispatch ) => {
       dispatch( fetchArticlesSuccess( response.data ) );
     } )
     .catch( ( err ) => {
-      dispatch( fetchArticlesFailure( err ) );
+      dispatch( fetchArticlesFailure( 'Cannot find this article' ) );
     } );
 };
 
@@ -74,13 +74,12 @@ export const fetchSingleArticle = slug => ( dispatch ) => {
       dispatch( fetchArticlesSuccess( response.data ) );
     } )
     .catch( ( err ) => {
-      dispatch( fetchArticlesFailure( err ) );
+      dispatch( fetchArticlesFailure( err.response ) );
     } );
 };
 
 export const addArticle = article => ( dispatch ) => {
-  console.log( articleUrl );
-  api.createResource( articleUrl, article )
+    api.createResource( articleUrl, article )
     .then( ( response ) => {
       dispatch( addArticlesSuccess( response.data ) );
     } )
