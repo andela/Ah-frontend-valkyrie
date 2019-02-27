@@ -1,47 +1,120 @@
 import React from 'react';
 import expect from 'expect';
-import { mount, shallow } from 'enzyme';
-import { Provider } from 'react-redux';
-import SingleArticles, { SingleArticle } from '../SingleArticle';
-
-const storeFake = ( state, action ) => ( {
-  subscribe: jest.fn(),
-  default: jest.fn(),
-  getState: () => state,
-  dispatch: () => action,
-} );
-
-const store = storeFake( {
-  articles: {
-    articles: {
-      id: 1,
-      title: 'test articles',
-      body: 'test body ',
-      slug: 'test-article',
-    },
-  },
-} );
+import { shallow } from 'enzyme';
+import { SingleArticle } from '../SingleArticle';
 
 describe( 'Test single article component', () => {
   const props = {
     fetchSingleArticle: jest.fn(),
     match: { params: { slug: 'test-article' } },
-    deletedArticle: {},
+    deleteArticle: jest.fn(),
     article: {
       id: 1,
       title: 'test article',
       body: 'test body ',
       slug: 'test-article',
+      comments: [],
+      likes: {
+          count: 0,
+      },
+      dislikes: {
+          count: 0,
+      },
+      author: {
+          username: 'testUser',
+      },
+      tagList: ['tag1', 'tag2'],
+    },
+    authUser: {
+        isAuthenticated: true,
+        username: 'testUser',
     },
   };
-  const wrapper = mount(
-    <Provider store={ store }>
-      <SingleArticles { ...props } />
-    </Provider>,
-  );
+  const wrapper = shallow( <SingleArticle { ...props } />);
+  wrapper.setState({triggerDelete: false});
+
   wrapper.setState( { article: props.article } );
-  const component = shallow( <SingleArticle { ...props } /> );
+
   it( 'Matches the snapshot', () => {
     expect( wrapper ).toMatchSnapshot();
   } );
-} );
+
+  it( 'Should delete Article', () => {
+    wrapper.instance().deleteArticle();
+    expect(wrapper.state('triggerDelete')).toEqual(true);
+  });
+
+  it( 'Should delete Article', () => {
+    wrapper.instance().deleteArticle();
+    expect(wrapper.state('triggerDelete')).toEqual(true);
+  });
+
+  it ( 'Shoud receive props', () => {
+    const nextProps = {
+      article: {
+        article: {
+          article: {
+            id: 1,
+            title: 'test article',
+            body: 'test body ',
+            slug: 'test-article',
+            comments: [],
+            likes: {
+              count: 0,
+            },
+            dislikes: {
+              count: 0,
+            },
+            author: {
+              username: 'testUser',
+            },
+            tagList: ['tag1', 'tag2'],
+          },
+        },
+      },
+      deleteError: {
+        data: {},
+      },
+      triggerDelete: {},
+    };
+    wrapper.instance().componentWillReceiveProps(nextProps);
+    expect(wrapper.state('isLoading')).toEqual(false);
+  });
+
+  it ( 'Shoud receive set loading to false props', () => {
+    const nextProps = {
+      article: {
+        article: {
+          article: {},
+        },
+      },
+      articleError: {
+        message: 'cannot find this article',
+      },
+      deleteError: {
+        data: {},
+      },
+      triggerDelete: {},
+    };
+    wrapper.instance().componentWillReceiveProps(nextProps);
+    expect(wrapper.state('isLoading')).toEqual(false);
+  });
+
+  it ( 'Shoud receive set redirect to home page', () => {
+    const nextProps = {
+      article: {
+        article: {
+          article: {},
+        },
+      },
+      deletedArticle: 'success',
+      deleteError: {
+        data: {},
+      },
+      triggerDelete: {},
+    };
+    wrapper.instance().componentWillReceiveProps(nextProps);
+    expect(wrapper.state('isLoading')).toEqual(false);
+  });
+
+});

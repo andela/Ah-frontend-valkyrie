@@ -15,7 +15,7 @@
     "test:w": "jest --watch --coverage",
     "test:coverage": "jest --coverage --colors",
     "eject": "react-scripts eject",
-    "start": "webpack-dev-server --mode development",
+    "start": "node server.js",
     "build": "webpack --mode production",
     "heroku-postbuild": "npm run build"
   },

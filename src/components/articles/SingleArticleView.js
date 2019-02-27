@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Parser from 'html-react-parser';
 import { connect } from 'react-redux';
 
-const SingleArticleView = props => (
+export const SingleArticleView = props => (
   <Fragment>
     <div>
       <ul className="breadcrumb">
@@ -27,7 +27,13 @@ const SingleArticleView = props => (
               <Link to={ `/articles/${ props.article.slug }/edit` }> Edit </Link>
             </li>
           </Fragment>
-          ) : '' }
+        ) : (
+          <Fragment>
+            <li className="breadcrumb-item">
+              { props.article.title }
+            </li>
+          </Fragment>
+        ) }
       </ul>
     </div>
     <div className="jumbotron rounded-0">
@@ -55,13 +61,15 @@ const SingleArticleView = props => (
         <i className="font-weight-bold">
           {props.article.read_time}
         </i>
-            &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; ({ props.article.likes.count }) &nbsp;
+        <i className="fa fa-thumbs-up text-success" />
+      &nbsp; &nbsp; &nbsp;  ({ props.article.dislikes.count }) &nbsp;
         <i className="fa fa-thumbs-down text-danger" />
-            &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;
         <i className="far fa-heart text-danger" />
-            &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;
         <i className="far fa-bookmark text-primary" />
-            &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;
         <span className="text-right color-gold">
           <i className="fas fa-star" />
           <i className="fas fa-star" />
