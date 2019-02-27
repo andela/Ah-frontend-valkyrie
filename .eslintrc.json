@@ -22,12 +22,32 @@
   },
   "rules": {
     "no-console": "off",
-    "strict": ["error", "global"],
+    "strict": [
+      "error",
+      "global"
+    ],
     "curly": "warn",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "quotes": ["error", "double"],
-    "indent": ["error", 2],
-    "semi": ["error", "always"],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
     "function-paren-newline": "off",
     "react/no-children-prop": 0,
     "no-nested-ternary": 0,

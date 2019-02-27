@@ -1,0 +1,7 @@
+.Pagination{
+    color: #38A1F3;
+    cursor: pointer;
+}
+.currentPage{
+    background-color: blue;
+}

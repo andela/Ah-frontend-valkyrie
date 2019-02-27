@@ -41,6 +41,9 @@ const articleReducer = (state = initialState, action) => {
   case "DELETE_ARTICLE": {
     return Object.assign(
       {}, state, { deletedArticle: action.payload },
+      {}, state, {
+        articles: state.articles.filter(article => article.slug !== action.payload.slug),
+      },
     );
   }
 
