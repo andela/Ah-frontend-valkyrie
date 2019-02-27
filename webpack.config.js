@@ -36,7 +36,7 @@ module.exports = {
         loaders: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jp(e*)g|svg|jpg)$/,
+        test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
         use: [{
           loader: "url-loader",
           options: {
