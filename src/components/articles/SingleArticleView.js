@@ -49,24 +49,19 @@ export const SingleArticleView = props => (
       <div className="card-text mt-5">
         { Parser(String(props.article.body))}
       </div>
-      {props.article.tagList.map((tag, key) => (
-        <button
-          type="button"
-          key={key}
+      {props.article.tagList.map( ( tag, key ) => (
+        <Link
+          to={`/search?search=${tag}&searchKey=tag`}
+          key={ key }
           className="btn btn-sm btn-outline-primary mr-1 mt-1"
         >
           #
           {tag}
-        </button>
-      ))}
+        </Link>
+      ) )}
       <hr />
       <p className="card-text">
-        <span className="text-primary">
-          {" "}
-@
-          { props.article.author.username }
-        </span>
-&nbsp;
+       <span className="text-primary"> @{ props.article.author.username }</span>&nbsp;
         <i className="font-weight-bold">
           {props.article.read_time}
         </i>

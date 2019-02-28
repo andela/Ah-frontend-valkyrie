@@ -8,7 +8,7 @@ const putPostConfig = ( method, body = null ) => {
   const config = {
     method: upperCasedMethod,
     headers: {
-      Accept: 'application/json',
+      'Content-type': 'application/json',
       Authorization: `Bearer ${ token }`,
     },
     mode: 'no-cors',
@@ -25,9 +25,10 @@ const getConfig = ( method ) => {
   const config = {
     method: upperCasedMethod,
     headers: {
-      Accept: 'application/json',
+      'Content-type': 'application/json',
     },
     mode: 'no-cors',
+    cache: 'no-cache',
   };
   return config;
 };

@@ -12,9 +12,10 @@ import setAuthToken from "./utils/setAuthToken";
 import { logout } from "./actions/index";
 import ResetPassword from "./components/auth/reset_password";
 import ChangePassword from "./components/auth/change_password";
-import SingleArticle from "./components/articles/SingleArticle";
+import  SingleArticle  from "./components/articles/SingleArticle";
 import PostArticle from "./components/articles/CreateArticle";
 import UpdateArticle from "./components/articles/UpdateArticle";
+import SearchArticle from './components/search/SearchArticle';
 
 if (localStorage.auth_token) {
   setAuthToken(localStorage.auth_token);
@@ -48,6 +49,7 @@ class App extends Component {
           <Route path="/article/create" component={PostArticle} />
           <Route path="/articles/:slug/edit/" component={UpdateArticle} />
           <Route exact path="/articles/:slug" component={SingleArticle} />
+          <Route exact path="/search" component={SearchArticle} />
         </div>
       </Router>
     );
