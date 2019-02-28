@@ -1,63 +1,61 @@
-import React from 'react';
-import expect from 'expect';
-import { shallow } from 'enzyme';
-import { SingleArticle } from '../SingleArticle';
+import React from "react";
+import expect from "expect";
+import { shallow } from "enzyme";
+import { SingleArticle } from "../SingleArticle";
 
-describe( 'Test single article component', () => {
+describe("Test single article component", () => {
   const props = {
     fetchSingleArticle: jest.fn(),
-    match: { params: { slug: 'test-article' } },
+    match: { params: { slug: "test-article" } },
+    handleDeleteArticle: jest.fn(),
     deleteArticle: jest.fn(),
     article: {
       id: 1,
-      title: 'test article',
-      body: 'test body ',
-      slug: 'test-article',
+      title: "test article",
+      body: "test body ",
+      slug: "test-article",
       comments: [],
       likes: {
-          count: 0,
+        count: 0,
       },
       dislikes: {
-          count: 0,
+        count: 0,
       },
       author: {
-          username: 'testUser',
+        username: "testUser",
       },
-      tagList: ['tag1', 'tag2'],
+      tagList: ["tag1", "tag2"],
     },
     authUser: {
-        isAuthenticated: true,
-        username: 'testUser',
+      isAuthenticated: true,
+      user: {
+        username: "testUser",
+      },
     },
   };
-  const wrapper = shallow( <SingleArticle { ...props } />);
-  wrapper.setState({triggerDelete: false});
+  const wrapper = shallow(<SingleArticle {...props} />);
+  wrapper.setState({ triggerDelete: false });
 
-  wrapper.setState( { article: props.article } );
+  wrapper.setState({ article: props.article });
 
-  it( 'Matches the snapshot', () => {
-    expect( wrapper ).toMatchSnapshot();
-  } );
-
-  it( 'Should delete Article', () => {
-    wrapper.instance().deleteArticle();
-    expect(wrapper.state('triggerDelete')).toEqual(true);
+  it("Matches the snapshot", () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
-  it( 'Should delete Article', () => {
-    wrapper.instance().deleteArticle();
-    expect(wrapper.state('triggerDelete')).toEqual(true);
+  it("Should delete Article", () => {
+    wrapper.instance().handleDeleteArticle();
+    expect(wrapper.state("triggerDelete")).toEqual(true);
   });
 
-  it ( 'Shoud receive props', () => {
+  it("Shoud receive props", () => {
     const nextProps = {
       article: {
         article: {
           article: {
             id: 1,
-            title: 'test article',
-            body: 'test body ',
-            slug: 'test-article',
+            title: "test article",
+            body: "test body ",
+            slug: "test-article",
             comments: [],
             likes: {
               count: 0,
@@ -66,9 +64,9 @@ describe( 'Test single article component', () => {
               count: 0,
             },
             author: {
-              username: 'testUser',
+              username: "testUser",
             },
-            tagList: ['tag1', 'tag2'],
+            tagList: ["tag1", "tag2"],
           },
         },
       },
@@ -78,10 +76,10 @@ describe( 'Test single article component', () => {
       triggerDelete: {},
     };
     wrapper.instance().componentWillReceiveProps(nextProps);
-    expect(wrapper.state('isLoading')).toEqual(false);
+    expect(wrapper.state("isLoading")).toEqual(false);
   });
 
-  it ( 'Shoud receive set loading to false props', () => {
+  it("Shoud receive set loading to false props", () => {
     const nextProps = {
       article: {
         article: {
@@ -89,7 +87,7 @@ describe( 'Test single article component', () => {
         },
       },
       articleError: {
-        message: 'cannot find this article',
+        message: "cannot find this article",
       },
       deleteError: {
         data: {},
@@ -97,24 +95,23 @@ describe( 'Test single article component', () => {
       triggerDelete: {},
     };
     wrapper.instance().componentWillReceiveProps(nextProps);
-    expect(wrapper.state('isLoading')).toEqual(false);
+    expect(wrapper.state("isLoading")).toEqual(false);
   });
 
-  it ( 'Shoud receive set redirect to home page', () => {
+  it("Shoud receive set redirect to home page", () => {
     const nextProps = {
       article: {
         article: {
           article: {},
         },
       },
-      deletedArticle: 'success',
+      deletedArticle: "success",
       deleteError: {
         data: {},
       },
       triggerDelete: {},
     };
     wrapper.instance().componentWillReceiveProps(nextProps);
-    expect(wrapper.state('isLoading')).toEqual(false);
+    expect(wrapper.state("isLoading")).toEqual(false);
   });
-
 });

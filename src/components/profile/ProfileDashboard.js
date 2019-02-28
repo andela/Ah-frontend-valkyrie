@@ -70,7 +70,6 @@ export class ProfileDashboard extends Component {
 
   render() {
     const { error, loading, profile } = this.props;
-    console.log(this.state.firstName);
 
     if (error) {
       return (

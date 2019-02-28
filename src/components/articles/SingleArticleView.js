@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import Parser from 'html-react-parser';
-import { connect } from 'react-redux';
-import CommentList from '../comments/CommentList';
-import CreateComment from '../comments/CreateComment';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import Parser from "html-react-parser";
+import { connect } from "react-redux";
+import CommentList from "../comments/CommentList";
+import CreateComment from "../comments/CreateComment";
 
 
 export const SingleArticleView = props => (
@@ -17,26 +17,26 @@ export const SingleArticleView = props => (
         { props.authUser.isAuthenticated
         && props.authUser.user.username == props.article.author.username ? (
           <Fragment>
-            <li className="breadcrumb-item">
+              <li className="breadcrumb-item">
               <Link
-                className="text-danger"
-                to="/"
-                onClick={ props.deleteArticle }
-              >
+                  className="text-danger"
+                  to="/"
+                  onClick={props.handleDeleteArticle}
+                >
                 Delete
-              </Link>
+                </Link>
             </li>
-            <li className="breadcrumb-item">
-              <Link to={ `/articles/${ props.article.slug }/edit` }> Edit </Link>
+              <li className="breadcrumb-item">
+              <Link to={`/articles/${props.article.slug}/edit`}> Edit </Link>
             </li>
-          </Fragment>
-        ) : (
-          <Fragment>
-            <li className="breadcrumb-item">
-              { props.article.title }
-            </li>
-          </Fragment>
-        ) }
+            </Fragment>
+          ) : (
+            <Fragment>
+              <li className="breadcrumb-item">
+                { props.article.title }
+              </li>
+            </Fragment>
+          ) }
       </ul>
     </div>
     <div className="jumbotron rounded-0">
@@ -44,29 +44,39 @@ export const SingleArticleView = props => (
         { props.article.title }
       </h4>
       <strong className="mt-3 mb-3 text-center">
-        <i>{ `"${ props.article.description }"`}</i>
+        <i>{ `"${props.article.description}"`}</i>
       </strong>
       <div className="card-text mt-5">
-        { Parser( String( props.article.body ) )}
+        { Parser(String(props.article.body))}
       </div>
-      {props.article.tagList.map( ( tag, key ) => (
+      {props.article.tagList.map((tag, key) => (
         <button
           type="button"
-          key={ key }
+          key={key}
           className="btn btn-sm btn-outline-primary mr-1 mt-1"
         >
           #
           {tag}
         </button>
-      ) )}
+      ))}
       <hr />
       <p className="card-text">
+        <span className="text-primary">
+          {" "}
+@
+          { props.article.author.username }
+        </span>
+&nbsp;
         <i className="font-weight-bold">
           {props.article.read_time}
         </i>
-        &nbsp; &nbsp; &nbsp; ({ props.article.likes.count }) &nbsp;
+        &nbsp; &nbsp; &nbsp; (
+        { props.article.likes.count }
+) &nbsp;
         <i className="fa fa-thumbs-up text-success" />
-      &nbsp; &nbsp; &nbsp;  ({ props.article.dislikes.count }) &nbsp;
+      &nbsp; &nbsp; &nbsp;  (
+        { props.article.dislikes.count }
+) &nbsp;
         <i className="fa fa-thumbs-down text-danger" />
         &nbsp; &nbsp; &nbsp;
         <i className="far fa-heart text-danger" />
@@ -85,24 +95,29 @@ export const SingleArticleView = props => (
       </p>
       <hr />
       { props.authUser.isAuthenticated ? (
-        <CreateComment articleSlug={ props.article.slug }/>
+        <CreateComment articleSlug={props.article.slug} />
       ) : (
         <Fragment>
-          <strong className="text-danger"><i className="fa fa-exclamation-triangle" /> You need to login in order to comment on this article!</strong>
+          <strong className="text-danger">
+            <i className="fa fa-exclamation-triangle" />
+            {" "}
+You need to login in order to comment on this article!
+          </strong>
         </Fragment>
       )}
-      <CommentList articleSlug={ props.article.slug }/>
-  </div>
+      <CommentList articleSlug={props.article.slug} />
+    </div>
   </Fragment>
 );
 
 SingleArticleView.propTypes = {
   article: PropTypes.object.isRequired,
   slug: PropTypes.string.isRequired,
+  handleDeleteArticle: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ( {
+const mapStateToProps = state => ({
   authUser: state.loginReducer,
-} );
+});
 
-export default connect( mapStateToProps )( SingleArticleView );
+export default connect(mapStateToProps)(SingleArticleView);
