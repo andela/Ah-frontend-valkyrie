@@ -1,9 +1,8 @@
 import React from "react";
 import TextInputField from "../common/TextInputField";
-import store from "../../store";
 
 const EditProfileForm = ({
-  profile, onSubmit, changed, firstName, lastName, username, bio,
+  profile, onSubmit, changed, firstName, lastName, username, bio
 }) => (
   <div className="row">
     <div className="col-sm-8 first">
@@ -81,7 +80,7 @@ const EditProfileForm = ({
         <br />
         <span>
           {" "}
-          {store.getState().loginReducer.email}
+          {profile.email}
           {" "}
         </span>
       </div>
