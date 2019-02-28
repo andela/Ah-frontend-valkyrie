@@ -102,6 +102,7 @@ export const SingleArticleView = props => (
           share:
         </span>
         <SocialShare slug={props.article.slug} />
+            &nbsp; &nbsp; &nbsp;
       </p>
       {!props.authUser.isAuthenticated
         || props.authUser.user.username === props.article.author.username ? (
