@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => (
+const Sidebar = props => (
   <Fragment>
     <div>
       <form action="/search" method="GET">
@@ -13,26 +13,25 @@ const Sidebar = () => (
             className="form-control rounded-0"
           />
           <div className="input-group-prepend">
-            <button
-              type="submit"
-              className="btn btn-outline-secondary rounded-0"
-            >
+            <button type="submit" className="btn btn-outline-secondary rounded-0">
               Search
             </button>
           </div>
         </div>
       </form>
 
-      <ul className="list-group mt-3">
-        <li className="list-group-item active rounded-0">
-          Featured Authors
-        </li>
+      <div className="list-group mt-3">
+        <span className="list-group-item active rounded-0">Featured Authors</span>
         {["Frank", "Farooq", "Manzede", "Lilian", "Baker", "Timothy"].map((author, key) => (
-          <li className="list-group-item rounded-0" key={key}>
+          <Link
+            to={`/search?search=${author}&searchKey=author`}
+            className="list-group-item rounded-0"
+            key={key}
+          >
             {author}
-          </li>
+          </Link>
         ))}
-      </ul>
+      </div>
 
       <div className="tags mt-3">
         <h5>Tags</h5>

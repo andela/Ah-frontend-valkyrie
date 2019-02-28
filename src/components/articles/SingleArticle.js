@@ -27,7 +27,6 @@ export class SingleArticle extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     if (nextProps.article.article) {
       this.setState({
         article: nextProps.article.article,
@@ -47,13 +46,15 @@ export class SingleArticle extends Component {
     this.setState({
       triggerDelete: true,
     });
-    if (this.props.authUser.isAuthenticated
-    && this.props.authUser.user.username === this.state.article.author.username) {
+    if (
+      this.props.authUser.isAuthenticated
+      && this.props.authUser.user.username === this.state.article.author.username
+    ) {
       this.props.deleteArticle(this.state.article.slug);
     } else {
       alert("You do not have permission to delete this comment");
     }
-  }
+  };
 
   render() {
     let content = (
@@ -65,9 +66,7 @@ export class SingleArticle extends Component {
     );
 
     if (this.state.isLoading === true) {
-      content = (
-        <Loader text="Fetching article..." />
-      );
+      content = <Loader text="Fetching article..." />;
     } else if (isEmpty(this.state.article)) {
       content = (
         <div className="alert alert-danger" role="alert">
@@ -79,9 +78,7 @@ export class SingleArticle extends Component {
       <Fragment>
         <div className="container mt-5 mb-5">
           <div className="row">
-            <div className="col-md-9">
-              {content}
-            </div>
+            <div className="col-md-9">{content}</div>
             <div className="col-md-3">
               <Sidebar />
             </div>
@@ -107,5 +104,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps, { fetchSingleArticle, deleteArticle },
+  mapStateToProps,
+  { fetchSingleArticle, deleteArticle },
 )(SingleArticle);
