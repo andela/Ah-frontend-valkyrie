@@ -78,6 +78,30 @@ export const fetchSingleArticle = slug => ( dispatch ) => {
     } );
 };
 
+export const fetchSearchArticle = (term, key = null) => (dispatch) => {
+  let url = `articles/search?search=${term}`;
+  if (key !== null) {
+    url = `articles/search?search=${term}&search_key=${key}`;
+  }
+  api.getResource(url)
+    .then((response) => {
+      dispatch(
+        {
+          type: "SEARCH_ARTICLES",
+          payload: response.data,
+        },
+      );
+    })
+    .catch((err) => {
+      dispatch(
+        {
+          type: "SEARCH_ARTICLE_ERROR",
+          payload: err.response,
+        },
+      );
+    });
+};
+
 export const addArticle = article => ( dispatch ) => {
     api.createResource( articleUrl, article )
     .then( ( response ) => {
@@ -89,13 +113,11 @@ export const addArticle = article => ( dispatch ) => {
 };
 
 export const deleteArticle = slug => ( dispatch ) => {
-  console.log( 'actions' );
   api.removeResource( `${ articleUrl }${ slug }/` )
     .then( ( res ) => {
       dispatch( deleteArticleSuccess( 'success' ) );
     } )
     .catch( ( err ) => {
-      console.log( err.response );
       dispatch( deleteArticleFailure( err.response ) );
     } );
 };
@@ -103,11 +125,9 @@ export const deleteArticle = slug => ( dispatch ) => {
 export const updateArticle = ( slug, articleToEdit ) => ( dispatch ) => {
   api.updateResource( `${ articleUrl }${ slug }/`, articleToEdit )
     .then( ( response ) => {
-      console.log( 'created' );
       dispatch( editArticleSuccess( response.data ) );
     } )
     .catch( ( err ) => {
-      console.log( 'error' );
       dispatch( editArticleFailure( err.response ) );
     } );
 };
