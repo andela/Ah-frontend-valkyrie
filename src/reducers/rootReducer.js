@@ -5,7 +5,8 @@ import signupReducer from "./signupReducer";
 import profile from "./profile";
 import passwordResetReducer from "./passwordResetReducer";
 import articleReducer from "./articleReducer";
-import commentReducer from '../components/comments/reducers/commentReducer';
+import commentReducer from "../components/comments/reducers/commentReducer";
+import rateReducer from "./rateReducer";
 
 export default combineReducers({
   loginReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   articles: articleReducer,
   errors: errorReducer,
   comments: commentReducer,
-} );
+  rated: rateReducer,
+});

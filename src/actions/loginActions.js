@@ -1,5 +1,6 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import setAuthToken from "../utils/setAuthToken";
 
 export const SET_LOGIN_PENDING = "SET_LOGIN_PENDING";
 export const SET_LOGIN_SUCCESS = "SET_LOGIN_SUCCESS";
@@ -41,6 +42,7 @@ export const login = (email, password) => (dispatch) => {
     .then((response) => {
       const { token } = response.data.user;
       localStorage.setItem("auth_token", token);
+      setAuthToken(token);
       const decodedData = jwt_decode(token);
       dispatch(loginSuccess(decodedData));
       window.location.href = "/";

@@ -25,7 +25,6 @@ export class ProfileDashboard extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onClickEdit = this.onClickEdit.bind(this);
     this.onClickClose = this.onClickClose.bind(this);
-    // this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {

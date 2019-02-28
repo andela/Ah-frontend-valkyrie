@@ -77,11 +77,11 @@ Container.propTypes = {
   children: PropTypes.instanceOf(Array).isRequired,
 };
 
-Login.propTypes = ({
+Login.propTypes = {
   isLoginPending: PropTypes.bool.isRequired,
   loginError: PropTypes.string,
   login: PropTypes.func.isRequired,
-});
+};
 
 Login.defaultProps = {
   loginError: "",

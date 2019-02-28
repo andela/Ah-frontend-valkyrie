@@ -82,3 +82,12 @@ img {
 #password-alert{
   display: none;
 }
+
+.rate-star {
+  font-size: 18px;
+  color: gold;
+}
+
+.list-group a:hover {
+  background-color: #f9f9f9 !important;
+}
