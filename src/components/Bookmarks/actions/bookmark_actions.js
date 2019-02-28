@@ -78,7 +78,7 @@ export const bookmarkAction = slug => ( dispatch ) => {
 export const getBookmarks = article_slug => ( dispatch ) => {
     const get_url = `${ process.env.HOST }/articles/${article_slug}/bookmark`
     return axios({
-        get_url,
+        url : get_url,
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +86,7 @@ export const getBookmarks = article_slug => ( dispatch ) => {
         },
         mode: "no-cors",
         cache: "no-cache",
-      },)
+      })
       .then(response => {
         dispatch(fetchBookmarks(response.data));
       }
