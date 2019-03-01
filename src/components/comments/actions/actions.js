@@ -1,7 +1,7 @@
-import commentsActionTypes from './action_types';
-import * as api from '../../utils/http';
+import commentsActionTypes from "./action_types";
+import * as api from "../../utils/http";
 
-const commentsUrl = 'articles/';
+const commentsUrl = "articles/";
 // synchronous actions
 export const fetchCommentsSuccess = comments => (
   {
@@ -58,44 +58,63 @@ export const editCommentFailure = error => (
     payload: error,
   }
 );
+
+export const likeComment = (like, id) => (
+  {
+    type: commentsActionTypes.LIKE_COMMENT,
+    payload: { data: like, data_id: id },
+  }
+);
+
+export const likeCommentFailure = error => (
+  {
+    type: commentsActionTypes.LIKE_COMMENT_ERROR,
+    payload: error,
+  }
+);
+
 // asynchronous actions with AJAX API requests
-export const fetchComments = slug => ( dispatch ) => {
-  return api.getResource( `${ commentsUrl }${ slug }/comments/` )
-    .then( ( response ) => {
-      dispatch( fetchCommentsSuccess( response.data ) );
-    } )
-    .catch( ( err ) => {
-      dispatch( fetchCommentsFailure( err.response ) );
-    } );
+export const fetchComments = slug => dispatch => api.getResource(`${commentsUrl}${slug}/comments/`)
+
+  .then((response) => {
+    dispatch(fetchCommentsSuccess(response.data));
+  })
+  .catch((err) => {
+    dispatch(fetchCommentsFailure(err.response));
+  });
+
+export const addComment = (slug, comment) => dispatch => api.createResource(`${commentsUrl}${slug}/comments/`, comment)
+  .then((response) => {
+    dispatch(addCommentsSuccess(response.data));
+  })
+  .catch((err) => {
+    dispatch(addCommentsFailure(err.response));
+  });
+
+export const deleteComment = (slug, id) => dispatch => api.removeResource(`${commentsUrl}${slug}/comments/${id}`)
+  .then(() => {
+    const message = `comment ${id} has been successfully deleted`;
+    dispatch(deleteCommentSuccess({ message, id }));
+  })
+  .catch((err) => {
+    dispatch(deleteCommentFailure(err.response.data.detail));
+  });
+
+export const editComment = (slug, id, commentToEdit) => dispatch => api.updateResource(`${commentsUrl}${slug}/comments/${id}`, commentToEdit)
+  .then((response) => {
+    dispatch(editCommentSuccess({ response, commentToEdit, id }));
+  })
+  .catch((err) => {
+    dispatch(editCommentFailure(err.response.data.errors.body));
+  });
+
+export const toLikeComment = (id, type) => (dispatch) => {
+  return api.createResource(`${commentsUrl}comments/${id}/${type}`)
+    .then((response) => {
+      dispatch(likeComment(response.data, id));
+    })
+    .catch((err) => {
+      dispatch(likeCommentFailure(err.response));
+    });
 };
 
-export const addComment = ( slug, comment ) => ( dispatch ) => {
-   return api.createResource( `${ commentsUrl }${ slug }/comments/`, comment )
-    .then( ( response ) => {
-      dispatch( addCommentsSuccess( response.data ) );
-    } )
-    .catch( ( err ) => {
-      dispatch( addCommentsFailure( err.response ) );
-    } );
-};
-
-export const deleteComment = ( slug, id ) => ( dispatch ) => {
-   return api.removeResource( `${ commentsUrl }${ slug }/comments/${ id }` )
-    .then( ( ) => {
-      const message = `comment ${ id } has been successfully deleted`;
-      dispatch( deleteCommentSuccess( { message, id } ) );
-    } )
-    .catch( ( err ) => {
-      dispatch( deleteCommentFailure( err.response.data.detail ) );
-    } );
-};
-
-export const editComment = ( slug, id, commentToEdit ) => ( dispatch ) => {
-   return api.updateResource( `${ commentsUrl }${ slug }/comments/${ id }`, commentToEdit )
-    .then( ( response ) => {
-      dispatch( editCommentSuccess( { response, commentToEdit, id } ) );
-    } )
-    .catch( ( err ) => {
-      dispatch( editCommentFailure( err.response.data.errors.body ) );
-    } );
-};

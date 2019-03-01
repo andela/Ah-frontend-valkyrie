@@ -99,8 +99,8 @@ export const SingleArticleView = props => (
           <RateArticle />
         )}
       <hr />
-      {props.authUser.isAuthenticated ? (
-        <CreateComment articleSlug={props.article.slug} />
+      { props.authUser.isAuthenticated ? (
+        <CreateComment articleSlug={ props.article.slug }/>
       ) : (
         <Fragment>
           <strong className="text-danger">
@@ -110,8 +110,8 @@ export const SingleArticleView = props => (
           </strong>
         </Fragment>
       )}
-      <CommentList articleSlug={props.article.slug} />
-    </div>
+      <CommentList articleSlug={ props.article.slug }/>
+  </div>
   </Fragment>
 );
 

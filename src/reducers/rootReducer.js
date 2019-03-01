@@ -6,6 +6,7 @@ import profile from "./profile";
 import passwordResetReducer from "./passwordResetReducer";
 import articleReducer from "./articleReducer";
 import commentReducer from "../components/comments/reducers/commentReducer";
+import LikeReducer from "../components/comments/reducers/UserReactionsReducer";
 import rateReducer from "./rateReducer";
 import socialShareReducer from "./socialShareReducer";
 
@@ -19,4 +20,6 @@ export default combineReducers({
   comments: commentReducer,
   rated: rateReducer,
   socialShareReducer,
+  reactions: LikeReducer,
 });
+

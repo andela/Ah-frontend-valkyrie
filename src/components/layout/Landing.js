@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import banner from "../../assets/images/banner.png";
-import Footer from "./Footer";
-import "../auth/styles/RegisterCSS.css";
-import Sidebar from "./Sidebar";
-import Article from "../articles/Article";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Dummy from '../../assets/images/dummy.png';
+import banner from '../../assets/images/banner.png';
+import Footer from './Footer';
+import Sidebar from './Sidebar';
+import Article from '../articles/Article';
+import Navbar from './Navbar';
 
 class Register extends Component {
   constructor(props) {

@@ -33,7 +33,7 @@ export const addArticlesFailure = errors => (
 
 export const deleteArticleSuccess = message => (
   {
-    type: "DELETE_ARTICLE",
+    type: 'DELETE_ARTICLE',
     payload: message,
   }
 );

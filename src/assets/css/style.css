@@ -17,14 +17,6 @@ img {
   border-bottom: 2px solid #fff;
 }
 
-.text-sm {
-  font-size: 10px !important;
-}
-
-.text-md {
-  font-size: 14px !important;
-}
-
 .comment-text {
   color: #3d405b;
 }
@@ -75,12 +67,12 @@ img {
   color: #f4eb49 !important;
 }
 
-.color-gold {
-  color: #f4eb49 !important;
-}
-
 #password-alert{
   display: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .rate-star {
@@ -91,3 +83,4 @@ img {
 .list-group a:hover {
   background-color: #f9f9f9 !important;
 }
+

@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import EditComment from './EditComment';
 import { deleteComment } from './actions/actions';
+import Like from './UserReactions';
 
 export class SingleComment extends Component {
   constructor( props ) {
@@ -28,7 +29,7 @@ export class SingleComment extends Component {
   }
 
   render() {
-    const { commentId, articleSlug, commentBody, username, createdOn, } = this.props;
+    const { commentId, articleSlug, commentBody, username, createdOn, comment } = this.props;
     const { toggleForm } = this.state;
     return (
       <div>
@@ -39,18 +40,21 @@ export class SingleComment extends Component {
               @
               { username }
             </i>
-            &nbsp; &nbsp; &nbsp; (0) &nbsp;
-            <i className="fa fa-thumbs-up text-success" />
-            &nbsp; &nbsp; &nbsp; (0) &nbsp;
-            <i className="fa fa-thumbs-down text-danger" />
-            &nbsp; &nbsp; &nbsp;
+            &nbsp;
+            { this.props.authUser.isAuthenticated ?   <Like comment={ comment } /> : (
+              <Fragment>
+                <strong className="text-danger"><i className="fa fa-exclamation-triangle" />  You need to login in order to like or dislike this comment!</strong>
+              </Fragment>
+            )}
             { this.props.authUser.isAuthenticated && this.props.authUser.user.username === username ? (
               <Fragment>
                 <button type="button" onClick={ this.handleOnDelete } className="btn btn-link text-danger">
-                  <i className="fas fa-trash-alt" /> &nbsp;Delete
+                  <i className="fas fa-trash-alt" />
+                   &nbsp;Delete
                 </button>
                 <button type="button" className="btn btn-link text-primary" onClick={ this.onClickEditArticle } >
-                  <i className="fas fa-edit" /> &nbsp;Edit
+                  <i className="fas fa-edit" />
+                   &nbsp;Edit
                 </button>
               </Fragment>
             ) : '' }
@@ -59,16 +63,14 @@ export class SingleComment extends Component {
             &nbsp; &nbsp;
             <span className="text-muted text-small">
               <i>
-              <span>Added:</span> &nbsp;
-              <Moment  parse="YYYY-MM-DD HH:mm" > { createdOn } </Moment>
+                <span>Added:</span>
+              &nbsp;
+                <Moment parse="YYYY-MM-DD HH:mm">{ createdOn }</Moment>
               </i>
             </span>
           </div>
           <EditComment
-            commentId={ commentId }
-            articleSlug={ articleSlug }
-            toggleForm={ toggleForm }
-            commentBody={ commentBody }
+            commentId={ commentId } articleSlug={ articleSlug } toggleForm={ toggleForm } commentBody={ commentBody }
           />
         </div>
       </div>

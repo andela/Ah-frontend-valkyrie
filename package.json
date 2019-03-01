@@ -48,8 +48,6 @@
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.1.0",
     "jwt-decode": "^2.2.0",
-    "mdbootstrap": "^4.7.1",
-    "mdbreact": "^4.10.0",
     "moment": "^2.24.0",
     "node-fetch": "^2.3.0",
     "node-sass": "^4.11.0",
