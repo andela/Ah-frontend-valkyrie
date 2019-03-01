@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { fetchSingleArticle, deleteArticle } from "../../actions/articleActions";
-import SingleArticleView from "./SingleArticleView";
-import Sidebar from "../layout/Sidebar";
-import Footer from "../layout/Footer";
-import isEmpty from "../../validations/isEmpty";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { fetchSingleArticle, deleteArticle } from '../../actions/articleActions';
+import SingleArticleView from './SingleArticleView';
+import Sidebar from '../layout/Sidebar';
+import Footer from '../layout/Footer';
+import isEmpty from '../../validations/isEmpty';
 import Loader from "../common/Loader";
 
 export class SingleArticle extends Component {
@@ -36,8 +36,11 @@ export class SingleArticle extends Component {
     if (nextProps.deletedArticle === "success") {
       window.location.href = "/";
     }
-    if (this.state.triggerDelete === true && nextProps.deleteError.data) {
-      toast.error("Unable to delete this article.");
+    if ( this.state.triggerDelete === true && nextProps.deleteError.data ) {
+      toast.error( 'Unable to delete this article.' );
+    }
+    if (nextProps.articleError) {
+      this.setState({ isLoading: false });
     }
     this.setState({ isLoading: false });
   }

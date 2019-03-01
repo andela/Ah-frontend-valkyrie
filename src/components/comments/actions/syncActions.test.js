@@ -84,4 +84,32 @@ describe( 'Comment Actions', () => {
     };
     expect( actions.editCommentFailure( errors ) ).toEqual( expectedAction );
   } );
+
+  it( 'should dispatch LIKE_COMMENT_SUCCESS on successfully liking a comment', () => {
+    const like = {
+     payload:{
+       data: 'like',
+       data_id: 1,
+     },
+    };
+
+    const id = 1;
+
+    const expectedAction = {
+      type: commentsActionTypes.LIKE_COMMENT,
+      payload: { data: like, data_id: id },
+    };
+    expect( actions.likeComment( like, id ) ).toEqual( expectedAction );
+  } );
+
+  it( 'should dispatch LIKE_COMMENT_ERROR on error while liking a comment', () => {
+    const error = {};
+
+    const expectedAction = {
+      type: commentsActionTypes.LIKE_COMMENT_ERROR,
+      payload: error,
+    };
+    expect( actions.likeCommentFailure( error ) ).toEqual( expectedAction );
+  } );
+
 } );
