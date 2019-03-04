@@ -48,7 +48,7 @@ export function fetchProfile(userId) {
   return (dispatch) => {
     dispatch(fetchProfileBegin());
     return fetch(
-      `${APP_URL}/users/${userId}/`,
+      `${process.env.HOST }/users/${userId}/`,
       {
         method: "GET",
         withCredentials: true,
@@ -71,7 +71,7 @@ export function updateProfile(data, userId) {
   return (dispatch) => {
     dispatch(updateProfileBegin());
     return fetch(
-      `${APP_URL}/users/${userId}/`,
+      `${process.env.HOST }/users/${userId}/`,
       {
         method: "PUT",
         withCredentials: true,

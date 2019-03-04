@@ -9,6 +9,7 @@ import RateArticle from "./RateArticle";
 import AverageRating from "./AverageRating";
 import "./styles/SingleArticle.css";
 import SocialShare from "../socialShare/SocialShare";
+import BookmarkArticle from '../Bookmarks/bookmarkArticle';
 
 
 export const SingleArticleView = props => (
@@ -85,12 +86,23 @@ export const SingleArticleView = props => (
         &nbsp; &nbsp; &nbsp;
         <i className="far fa-heart text-danger" />
         &nbsp; &nbsp; &nbsp;
-        <i className="far fa-bookmark text-primary" />
+        { props.authUser.isAuthenticated ? 
+          (<BookmarkArticle articleSlug={ props.article.slug }/>):
+          (
+           <Fragment>
+             <strong className="text-danger">
+               <i className="fa fa-exclamation-triangle" />
+               {" "}
+   You need to login in order to bookmark this article!
+             </strong>
+           </Fragment>)
+         }
         &nbsp; &nbsp; &nbsp;
         <span className="pr-2">
           share:
         </span>
         <SocialShare slug={props.article.slug} />
+            &nbsp; &nbsp; &nbsp;
       </p>
       {!props.authUser.isAuthenticated
         || props.authUser.user.username === props.article.author.username ? (
@@ -126,3 +138,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(SingleArticleView);
+ 
