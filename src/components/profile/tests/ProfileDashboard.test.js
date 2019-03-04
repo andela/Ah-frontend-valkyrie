@@ -20,6 +20,7 @@ const props = {
   },
   loading: false,
   error: null,
+  bookmarks: [],
   fetchProfile: jest.fn(),
   updateProfile: jest.fn(),
   changelistener: jest.fn(),
@@ -42,6 +43,7 @@ describe("Dashboard testing", () => {
           image: "",
         },
       },
+      bookmarks: [],
     });
   });
 
