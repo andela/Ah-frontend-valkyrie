@@ -16,22 +16,22 @@ describe("Test single article component", () => {
       slug: "test-article",
       comments: [],
       likes: {
-        count: 0,
+        count: 0
       },
       dislikes: {
-        count: 0,
+        count: 0
       },
       author: {
-        username: "testUser",
+        username: "testUser"
       },
-      tagList: ["tag1", "tag2"],
+      tagList: ["tag1", "tag2"]
     },
     authUser: {
       isAuthenticated: true,
       user: {
-        username: "testUser",
-      },
-    },
+        username: "testUser"
+      }
+    }
   };
   const wrapper = shallow(<SingleArticle {...props} />);
   wrapper.setState({ triggerDelete: false });
@@ -58,22 +58,22 @@ describe("Test single article component", () => {
             slug: "test-article",
             comments: [],
             likes: {
-              count: 0,
+              count: 0
             },
             dislikes: {
-              count: 0,
+              count: 0
             },
             author: {
-              username: "testUser",
+              username: "testUser"
             },
-            tagList: ["tag1", "tag2"],
-          },
-        },
+            tagList: ["tag1", "tag2"]
+          }
+        }
       },
       deleteError: {
-        data: {},
+        data: {}
       },
-      triggerDelete: {},
+      triggerDelete: {}
     };
     wrapper.instance().componentWillReceiveProps(nextProps);
     expect(wrapper.state("isLoading")).toEqual(false);
@@ -83,16 +83,16 @@ describe("Test single article component", () => {
     const nextProps = {
       article: {
         article: {
-          article: {},
-        },
+          article: {}
+        }
       },
       articleError: {
-        message: "cannot find this article",
+        message: "cannot find this article"
       },
       deleteError: {
-        data: {},
+        data: {}
       },
-      triggerDelete: {},
+      triggerDelete: {}
     };
     wrapper.instance().componentWillReceiveProps(nextProps);
     expect(wrapper.state("isLoading")).toEqual(false);
@@ -102,14 +102,14 @@ describe("Test single article component", () => {
     const nextProps = {
       article: {
         article: {
-          article: {},
-        },
+          article: {}
+        }
       },
       deletedArticle: "success",
       deleteError: {
-        data: {},
+        data: {}
       },
-      triggerDelete: {},
+      triggerDelete: {}
     };
     wrapper.instance().componentWillReceiveProps(nextProps);
     expect(wrapper.state("isLoading")).toEqual(false);
