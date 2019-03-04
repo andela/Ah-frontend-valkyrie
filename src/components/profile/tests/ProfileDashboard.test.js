@@ -8,7 +8,7 @@ import { ProfileDashboard } from "../ProfileDashboard";
 const mockStore = configureMockStore([thunk]);
 
 const event = {
-  preventDefault: jest.fn(),
+  preventDefault: jest.fn()
 };
 const props = {
   profile: {
@@ -16,7 +16,7 @@ const props = {
     image: "",
     bio: "",
     first_name: "Test",
-    last_name: "",
+    last_name: ""
   },
   loading: false,
   error: null,
@@ -26,7 +26,7 @@ const props = {
   changelistener: jest.fn(),
   onClickEdit: jest.fn(),
   onClickClose: jest.fn(),
-  onSubmit: jest.fn(),
+  onSubmit: jest.fn()
 };
 
 let Store;
@@ -40,10 +40,10 @@ describe("Dashboard testing", () => {
           first_name: "Test",
           last_name: "User",
           bio: "Tester",
-          image: "",
-        },
+          image: ""
+        }
       },
-      bookmarks: [],
+      bookmarks: []
     });
   });
 

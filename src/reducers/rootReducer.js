@@ -12,6 +12,7 @@ import socialShareReducer from "./socialShareReducer";
 import bookmarkReducer from "../components/Bookmarks/reducers/bookmarkReducer";
 import notificationReducer from "./notificationReducer";
 import likeDislikeArticleReducer from "./likeArticleReducer";
+import followUserReducer from "./followUserReducer";
 
 export default combineReducers({
   loginReducer,
@@ -27,4 +28,5 @@ export default combineReducers({
   bookmarkReducer,
   notifications: notificationReducer,
   like: likeDislikeArticleReducer,
+  follow: followUserReducer
 });

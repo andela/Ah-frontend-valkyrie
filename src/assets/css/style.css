@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Hind+Guntur|Questrial');
+@import url("https://fonts.googleapis.com/css?family=Hind+Guntur|Questrial");
 * {
   padding: 0;
   margin: 0;
 }
 body {
   background-color: #d9d9d9;
-  font-family: 'Questrial', sans-serif;
+  font-family: "Questrial", sans-serif;
   background: #f7f6f6;
 }
 
@@ -43,7 +43,7 @@ img {
 .banner .banner-text {
   color: #fff;
   font-weight: lighter;
-  font-family: 'Questrial', sans-serif;
+  font-family: "Questrial", sans-serif;
 }
 
 .footer {
@@ -58,7 +58,15 @@ img {
   color: #f4eb49 !important;
 }
 
+<<<<<<< HEAD
 #password-alert{
+=======
+.color-gold {
+  color: #f4eb49 !important;
+}
+
+#password-alert {
+>>>>>>> feat(Following Users): Implement User following
   display: none;
 }
 
@@ -74,6 +82,7 @@ img {
 .list-group a:hover {
   background-color: #f9f9f9 !important;
 }
+<<<<<<< HEAD
 
 .badge {
   position: absolute;
@@ -115,3 +124,8 @@ button[type="button"]:hover {
   color: #007bff!important;
   cursor: pointer;
 }
+=======
+#btn_follow {
+  margin-left: 20px;
+}
+>>>>>>> feat(Following Users): Implement User following

@@ -1,13 +1,16 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { fetchSingleArticle, deleteArticle } from '../../actions/articleActions';
-import SingleArticleView from './SingleArticleView';
-import Sidebar from '../layout/Sidebar';
-import Footer from '../layout/Footer';
-import isEmpty from '../../validations/isEmpty';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  fetchSingleArticle,
+  deleteArticle
+} from "../../actions/articleActions";
+import SingleArticleView from "./SingleArticleView";
+import Sidebar from "../layout/Sidebar";
+import Footer from "../layout/Footer";
+import isEmpty from "../../validations/isEmpty";
 import Loader from "../common/Loader";
 
 export class SingleArticle extends Component {
@@ -18,7 +21,7 @@ export class SingleArticle extends Component {
       article: {},
       deletedArticle: "",
       deleteError: "",
-      triggerDelete: false,
+      triggerDelete: false
     };
   }
 
@@ -29,15 +32,15 @@ export class SingleArticle extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.article.article) {
       this.setState({
-        article: nextProps.article.article,
+        article: nextProps.article.article
       });
     }
 
     if (nextProps.deletedArticle === "success") {
       window.location.href = "/";
     }
-    if ( this.state.triggerDelete === true && nextProps.deleteError.data ) {
-      toast.error( 'Unable to delete this article.' );
+    if (this.state.triggerDelete === true && nextProps.deleteError.data) {
+      toast.error("Unable to delete this article.");
     }
     if (nextProps.articleError) {
       this.setState({ isLoading: false });
@@ -47,11 +50,11 @@ export class SingleArticle extends Component {
 
   handleDeleteArticle = () => {
     this.setState({
-      triggerDelete: true,
+      triggerDelete: true
     });
     if (
-      this.props.authUser.isAuthenticated
-      && this.props.authUser.user.username === this.state.article.author.username
+      this.props.authUser.isAuthenticated &&
+      this.props.authUser.user.username === this.state.article.author.username
     ) {
       this.props.deleteArticle(this.state.article.slug);
     } else {
@@ -96,7 +99,7 @@ export class SingleArticle extends Component {
 }
 
 SingleArticle.propTypes = {
-  fetchSingleArticle: PropTypes.func.isRequired,
+  fetchSingleArticle: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -104,10 +107,10 @@ const mapStateToProps = state => ({
   articleError: state.articles.errors,
   deletedArticle: state.articles.deletedArticle,
   deleteError: state.articles.errors,
-  authUser: state.loginReducer,
+  authUser: state.loginReducer
 });
 
 export default connect(
   mapStateToProps,
-  { fetchSingleArticle, deleteArticle },
+  { fetchSingleArticle, deleteArticle }
 )(SingleArticle);
