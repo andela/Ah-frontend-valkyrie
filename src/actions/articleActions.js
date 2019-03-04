@@ -67,15 +67,13 @@ export const fetchArticles = () => dispatch => api.getResource(articleUrl)
     dispatch(fetchArticlesFailure("Cannot find this article"));
   });
 
-export const fetchSingleArticle = slug => (dispatch) => {
-  api.getSingleResource(`${articleUrl}${slug}/`)
+export const fetchSingleArticle = slug => (dispatch) => api.getSingleResource(`${articleUrl}${slug}/`)
     .then((response) => {
       dispatch(fetchArticlesSuccess(response.data));
     })
     .catch((err) => {
       dispatch(fetchArticlesFailure(err));
     });
-};
 
 export const fetchSearchArticle = (term, key = null) => (dispatch) => {
   let url = `articles/search?search=${term}`;

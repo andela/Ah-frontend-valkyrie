@@ -7,6 +7,7 @@ import passwordResetReducer from "./passwordResetReducer";
 import articleReducer from "./articleReducer";
 import commentReducer from "../components/comments/reducers/commentReducer";
 import rateReducer from "./rateReducer";
+import socialShareReducer from "./socialShareReducer";
 
 export default combineReducers({
   loginReducer,
@@ -17,4 +18,5 @@ export default combineReducers({
   errors: errorReducer,
   comments: commentReducer,
   rated: rateReducer,
+  socialShareReducer,
 });

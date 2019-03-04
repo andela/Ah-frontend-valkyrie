@@ -7,6 +7,9 @@ import CommentList from "../comments/CommentList";
 import CreateComment from "../comments/CreateComment";
 import RateArticle from "./RateArticle";
 import AverageRating from "./AverageRating";
+import "./styles/SingleArticle.css";
+import SocialShare from "../socialShare/SocialShare";
+
 
 export const SingleArticleView = props => (
   <Fragment>
@@ -16,66 +19,82 @@ export const SingleArticleView = props => (
           <Link to="/">Home</Link>
         </li>
         {props.authUser.isAuthenticated
-        && props.authUser.user.username == props.article.author.username ? (
-          <Fragment>
+          && props.authUser.user.username == props.article.author.username ? (
+            <Fragment>
               <li className="breadcrumb-item">
-              <Link className="text-danger" to="/" onClick={props.handleDeleteArticle}>
-                Delete
+                <Link
+                  className="text-danger"
+                  to="/"
+                  onClick={props.handleDeleteArticle}
+                >
+                  Delete
                 </Link>
-            </li>
+              </li>
               <li className="breadcrumb-item">
-              <Link to={`/articles/${props.article.slug}/edit`}> Edit </Link>
-            </li>
+                <Link to={`/articles/${props.article.slug}/edit`}> Edit </Link>
+              </li>
             </Fragment>
           ) : (
             <Fragment>
-              <li className="breadcrumb-item">{props.article.title}</li>
+              <li className="breadcrumb-item">
+                {props.article.title}
+              </li>
             </Fragment>
           )}
       </ul>
     </div>
     <div className="jumbotron rounded-0">
-      <h4 className="display-5 text-center display-5">{props.article.title}</h4>
+      <h4 className="display-5 text-center display-5">
+        {props.article.title}
+      </h4>
       <strong className="mt-3 mb-3 text-center">
         <i>{`"${props.article.description}"`}</i>
       </strong>
       <div className="card-text mt-5">
-        { Parser(String(props.article.body))}
+        {Parser(String(props.article.body))}
       </div>
-      {props.article.tagList.map( ( tag, key ) => (
+      {props.article.tagList.map((tag, key) => (
         <Link
           to={`/search?search=${tag}&searchKey=tag`}
-          key={ key }
+          key={key}
           className="btn btn-sm btn-outline-primary mr-1 mt-1"
         >
           #
           {tag}
         </Link>
-      ) )}
+      ))}
       <hr />
       <p className="card-text">
-       <span className="text-primary"> @{ props.article.author.username }</span>&nbsp;
+        <span className="text-primary">
+          {" "}
+          @
+          {props.article.author.username}
+        </span>
+        &nbsp;
         <i className="font-weight-bold">
           {props.article.read_time}
         </i>
         &nbsp; &nbsp; &nbsp; (
-        { props.article.likes.count }
-) &nbsp;
+        {props.article.likes.count}
+        ) &nbsp;
         <i className="fa fa-thumbs-up text-success" />
-      &nbsp; &nbsp; &nbsp;  (
-        { props.article.dislikes.count }
-) &nbsp;
+        &nbsp; &nbsp; &nbsp;  (
+        {props.article.dislikes.count}
+        ) &nbsp;
         <i className="fa fa-thumbs-down text-danger" />
         &nbsp; &nbsp; &nbsp;
         <i className="far fa-heart text-danger" />
         &nbsp; &nbsp; &nbsp;
         <i className="far fa-bookmark text-primary" />
         &nbsp; &nbsp; &nbsp;
-        <i className="fas fa-share-alt text-primary mr-3" />
+        <span className="pr-2">
+          share:
+        </span>
+        <SocialShare slug={props.article.slug} />
       </p>
       {!props.authUser.isAuthenticated
-      || props.authUser.user.username === props.article.author.username ? (
-        <AverageRating avgRate={props.article.average_rating} />
+        || props.authUser.user.username === props.article.author.username ? (
+          <AverageRating avgRate={props.article.average_rating} />
         ) : (
           <RateArticle />
         )}
@@ -87,8 +106,7 @@ export const SingleArticleView = props => (
           <strong className="text-danger">
             <i className="fa fa-exclamation-triangle" />
             {" "}
-You need to login in order to comment on
-            this article!
+              You need to login in order to comment on this article!
           </strong>
         </Fragment>
       )}
