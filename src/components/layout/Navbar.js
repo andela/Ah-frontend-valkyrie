@@ -85,7 +85,7 @@ const DropDownMenu = ({ clicked }) => (
   <div className="dropdown-menu" aria-labelledby="dropdownMenu">
     <button className="dropdown-item" type="button">My profile</button>
     <Link to="/article/create" className="dropdown-item">Write article</Link>
-    <button className="dropdown-item" type="button">My bookmarks</button>
+    <Link to="/users/dashboard" className="dropdown-item">My bookmarks</Link>
     <button className="dropdown-item" type="button">My favorites</button>
     <hr />
     <button className="dropdown-item" type="button" onClick={clicked}>
