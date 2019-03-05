@@ -78,27 +78,16 @@ export const SingleArticleView = props => (
         &nbsp; &nbsp; &nbsp; (
         {props.article.likes.count}
         ) &nbsp;
-        <i className="fa fa-thumbs-up text-success" />
-        &nbsp; &nbsp; &nbsp;  (
+        <i className="fa fa-thumbs-up text-success mr-3" /> (
         {props.article.dislikes.count}
         ) &nbsp;
-        <i className="fa fa-thumbs-down text-danger" />
-        &nbsp; &nbsp; &nbsp;
-        <i className="far fa-heart text-danger" />
-        &nbsp; &nbsp; &nbsp;
+        <i className="fa fa-thumbs-down text-danger mr-3" />
+        <i className="far fa-heart text-danger mr-3" />
         { props.authUser.isAuthenticated ? 
           (<BookmarkArticle articleSlug={ props.article.slug }/>):
-          (
-           <Fragment>
-             <strong className="text-danger">
-               <i className="fa fa-exclamation-triangle" />
-               {" "}
-   You need to login in order to bookmark this article!
-             </strong>
-           </Fragment>)
+          ""
          }
-        &nbsp; &nbsp; &nbsp;
-        <span className="pr-2">
+        <span className="pr-2 ml-3">
           share:
         </span>
         <SocialShare slug={props.article.slug} />
@@ -138,4 +127,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(SingleArticleView);
- 
