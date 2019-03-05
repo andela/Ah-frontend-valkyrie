@@ -11,7 +11,7 @@ const PageItem = ({ label, clicked }) => (
 );
 
 PageItem.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.objectOf(PropTypes.number).isRequired,
   clicked: PropTypes.func.isRequired,
 };
 

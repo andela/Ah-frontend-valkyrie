@@ -1,23 +1,23 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { editComment } from './actions/actions';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { editComment } from "./actions/actions";
 
 export class EditComment extends Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {
-      updatedCommentBody: '',
+      updatedCommentBody: "",
     };
   }
-  
-  handleOnChange = ( event ) => {
-    this.setState( {
-      updatedCommentBody: event.target.value,
-    } );
-  }
 
-  handleSubmit = ( event ) => {
+  handleOnChange = (event) => {
+    this.setState({
+      updatedCommentBody: event.target.value,
+    });
+  };
+
+  handleSubmit = (event) => {
     event.preventDefault();
     const { articleSlug, commentId, commentBody } = this.props;
     const { updatedCommentBody } = this.state;
@@ -26,26 +26,26 @@ export class EditComment extends Component {
         body: updatedCommentBody !== null ? updatedCommentBody : commentBody,
       },
     };
-    this.props.editComment( articleSlug, commentId, comment );
-  }
+    this.props.editComment(articleSlug, commentId, comment);
+  };
 
   render() {
     const { toggleForm, commentBody } = this.props;
     return (
       <Fragment>
-        <form onSubmit={ this.handleSubmit } className={ toggleForm || "d-none" }>
+        <form onSubmit={this.handleSubmit} className={toggleForm || "d-none"}>
           <div className="form-group">
             <textarea
               id="hide-text-box"
               name="body"
-              defaultValue={ commentBody }
+              defaultValue={commentBody}
               className="form-control expand-text-box"
-              onChange={ this.handleOnChange }
+              onChange={this.handleOnChange}
               required
             />
           </div>
           <div className="button">
-            <input type="submit" value="Edit comment" className="btn btn-sm btn-primary"/>
+            <input type="submit" value="Edit comment" className="btn btn-sm btn-primary mb-6" />
           </div>
         </form>
       </Fragment>
@@ -61,8 +61,11 @@ EditComment.propTypes = {
   editComment: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ( {
+const mapStateToProps = state => ({
   error: state.error,
-} );
+});
 
-export default connect( mapStateToProps, { editComment } )( EditComment );
+export default connect(
+  mapStateToProps,
+  { editComment },
+)(EditComment);

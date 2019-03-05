@@ -27,17 +27,28 @@ describe("<Single Comment />", () => {
     mockComponent.setState({ toggleForm: "d-block" });
     mockComponent.instance().shouldToggleForm();
     expect(mockComponent.state("toggleForm")).toBe("d-none");
-
-    mockComponent.setState({ toggleForm: "d-none" });
-    mockComponent.instance().shouldToggleForm();
-    expect(mockComponent.state("toggleForm")).toBe("d-block");
   }),
-
   it("handle submit", () => {
     mockComponent.instance().handleOnDelete();
   });
-
   it("handle onclick", () => {
     mockComponent.instance().onClickEditArticle();
+  });
+  it("Display comment history", () => {
+    const initialState = {
+      toggleForm: "d-none",
+      showHistory: false,
+    };
+    mockComponent.setState(initialState);
+    mockComponent.instance().handleCommentHistory();
+    expect(mockComponent.state("showHistory")).toBe(true);
+  });
+  it("Display the confirmation dialog", () => {
+    const initialState = {
+      toggleForm: "d-none",
+      showHistory: false,
+    };
+    mockComponent.setState(initialState);
+    mockComponent.instance().confirmationDialog();
   });
 });

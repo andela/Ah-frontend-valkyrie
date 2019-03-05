@@ -31,20 +31,9 @@ export const SingleArticleItem = props => (
               <i className="fa fa-thumbs-up text-primary mr-3" />
 (
               {props.article.dislikes.count}
-                  ) &nbsp;
-              <i className="fa fa-thumbs-down text-danger" />
-                  &nbsp; &nbsp; &nbsp;
-              <i className="far fa-heart text-danger" />
-                  &nbsp; &nbsp; &nbsp;
-                  &nbsp; &nbsp; &nbsp;
-              <span className="text-right color-gold">
-                <i className="fas fa-star" />
-                <i className="fas fa-star" />
-                <i className="fas fa-star" />
-                <i className="fas fa-star" />
-                <i className="fas fa-star-half-alt" />
-              </span>
-                  &nbsp; &nbsp; &nbsp;
+              ) &nbsp;
+              <i className="fa fa-thumbs-down text-danger mr-3" />
+              <i className="far fa-heart text-danger mr-3" />
               <i className="fas fa-share-alt text-primary" />
             </p>
             <AverageRating avgRate={props.article.average_rating} />

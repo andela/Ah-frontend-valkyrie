@@ -65,6 +65,7 @@ export class SingleArticle extends Component {
         handleDeleteArticle={this.handleDeleteArticle}
         slug={this.props.match.params.slug}
         article={this.state.article}
+        history={this.props.history}
       />
     );
 

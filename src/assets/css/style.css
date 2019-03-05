@@ -35,15 +35,6 @@ img {
   color: #3d405b;
 }
 
-.banner {
-  /* background: url('../images/banner.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  height: 420px;
-  vertical-align: middle; */
-}
-
 .ql-editor {
   min-height: 240px !important;
   background: #fff !important;
@@ -87,4 +78,40 @@ img {
 .badge {
   position: absolute;
   left: 2.8em;
+}
+
+.fa-history:hover {
+  color: blue;
+}
+
+.comment-history {
+  background-color: white;
+  padding: 5px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.verticle-scroll-bar {
+  overflow-y: auto;
+  max-height: 300px;
+  margin-bottom: 20px;
+}
+
+.icons {
+  font-family: 'Questrial', sans-serif;
+}
+
+button[type="button"]:hover {
+  cursor: pointer;
+}
+
+.btn-link {
+  padding: 1px;
+}
+
+.fa-bookmark:hover {
+  color: #007bff!important;
+  cursor: pointer;
 }
