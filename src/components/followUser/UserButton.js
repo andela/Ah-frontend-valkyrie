@@ -10,7 +10,7 @@ const UserButton = props => {
         type="button"
         className={`btn ${
           text === "Following" ? "btn-primary" : "btn-outline-primary"
-        } btn-sm btn-outline-primary ml-4`}
+        } btn-sm btn-outline-primary`}
         id={id_value}
         onClick={handleClick}
       >

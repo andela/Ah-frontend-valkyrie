@@ -11,8 +11,7 @@ import "./styles/SingleArticle.css";
 import SocialShare from "../socialShare/SocialShare";
 import BookmarkArticle from "../Bookmarks/bookmarkArticle";
 import LikeArticle from "./LikeArticle";
-
-import followButtonView from "../followUser/FollowButtonView";
+import FollowButtonView from "../followUser/FollowButtonView";
 
 export const SingleArticleView = props => (
   <Fragment>
@@ -46,6 +45,9 @@ export const SingleArticleView = props => (
     </div>
     <div className="jumbotron rounded-0">
       <h4 className="display-5 text-center display-5">{props.article.title}</h4>
+      <div className="text-center">
+        <img src={props.article.image_url} className="img-responsive" />
+      </div>
       <strong className="mt-3 mb-3 text-center">
         <i>{`"${props.article.description}"`}</i>
       </strong>
@@ -61,6 +63,7 @@ export const SingleArticleView = props => (
       ))}
       <hr />
       <p className="card-text">
+        <FollowButtonView article={props.article} />
         <span className="text-primary"> @{props.article.author.username}</span>
         &nbsp;
         <i className="font-weight-bold">{props.article.read_time}</i>

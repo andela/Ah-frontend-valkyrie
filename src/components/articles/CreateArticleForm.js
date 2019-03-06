@@ -1,21 +1,22 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import Modules from '../utils/QuilModules';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import Modules from "../utils/QuilModules";
+import UploadImage from "./UploadImage";
 
 const CreateArticleForm = props => (
   <Fragment>
     <h4>Create an article</h4>
     <hr />
-    <form onSubmit={ props.handleOnSubmit }>
+    <form onSubmit={props.handleOnSubmit}>
       <div className="create-article">
         <div className="form-group">
           <label htmlFor="title">Article title</label>
           <input
             type="text"
             name="title"
-            onChange={ props.handleOnChange }
+            onChange={props.handleOnChange}
             className="form-control"
             required="required"
             max="300"
@@ -23,7 +24,14 @@ const CreateArticleForm = props => (
         </div>
         <div className="form-group">
           <label htmlFor="description">Article Description</label>
-          <textarea rows="2" required="required" name="description" max="300" onChange={ props.handleOnChange } className="form-control" />
+          <textarea
+            rows="2"
+            required="required"
+            name="description"
+            max="300"
+            onChange={props.handleOnChange}
+            className="form-control"
+          />
         </div>
         <div className="form-group">
           <label htmlFor="body">Article body</label>
@@ -31,20 +39,40 @@ const CreateArticleForm = props => (
           <ReactQuill
             name="articleBody"
             className="textEditor"
-            modules={ Modules }
-            onChange={ props.handleEditor }
+            modules={Modules}
+            onChange={props.handleEditor}
           />
         </div>
         <div className="form-group">
           <label htmlFor="tags">Tags</label>
-          <input type="text" name="tags" onChange={ props.handleOnChange } className="form-control" />
+          <input
+            type="text"
+            name="tags"
+            onChange={props.handleOnChange}
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="image">Image</label>
+          <div className="row mt-0">
+            <div className="col-md-9">
+              <input
+                placeholder="enter image web url"
+                type="text"
+                name="imageUrl"
+                onChange={props.handleOnChange}
+                className="form-control"
+              />
+            </div>
+            <div className="col-md-3">
+              OR
+              <UploadImage />
+            </div>
+          </div>
         </div>
         <div className="button">
-          <button
-            type="submit"
-            className="btn btn-md btn-primary"
-          >
-              Publish Article
+          <button type="submit" className="btn btn-md btn-primary">
+            Publish Article
           </button>
         </div>
       </div>
@@ -55,6 +83,6 @@ const CreateArticleForm = props => (
 CreateArticleForm.propTypes = {
   handleOnChange: PropTypes.func.isRequired,
   handleEditor: PropTypes.func.isRequired,
-  handleOnSubmit: PropTypes.func.isRequired,
+  handleOnSubmit: PropTypes.func.isRequired
 };
 export default CreateArticleForm;
