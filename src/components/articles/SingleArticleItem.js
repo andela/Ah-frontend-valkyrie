@@ -9,7 +9,7 @@ import AverageRating from "./AverageRating";
 export const SingleArticleItem = props => (
   <Fragment>
     <div className="card mb-3">
-      <div className="row no-gutters">
+      <div className="row no-gutters row-single-article">
         <div className="col-md-4">
           <img src={Dummy} className="card-img img-thumbnail img-fluid rounded-0" alt="..." />
         </div>
