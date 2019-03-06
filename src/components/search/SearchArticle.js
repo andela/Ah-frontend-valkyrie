@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Sidebar from "../layout/Sidebar";
 import Footer from "../layout/Footer";
 import { fetchSearchArticle, fetchArticles } from "../../actions/articleActions";
 import SearchArticleForm from "./SearchArticleForm";

@@ -2,28 +2,45 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import store from "../../store/index";
 import Logo from "../../assets/images/logo.png";
 import Modal from "../common/Modal";
 import Login from "../auth/Login";
 import "./styles/Navbar.css";
 import profileImage from "../../assets/images/img_avatar.png";
 import { logout } from "../../actions/index";
+import Notifications from "../notifications/Notifications";
+import { fetchNotifications } from "../../actions/notificationActions";
 
-class Navbar extends Component {
+export class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.logoutHandler = this.logoutHandler.bind(this);
+    this.state = { notifications: [] };
   }
 
-  logoutHandler() {
+  componentDidMount() {
+    this.props.fetchNotifications();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.notifications) {
+      if (nextProps.notifications.message) {
+        this.setState({ notifications: [] });
+      } else {
+        this.setState({
+          notifications: nextProps.notifications.notifications,
+        });
+      }
+    }
+  }
+
+  logoutHandler = () => {
     this.props.logout();
     window.location.href = "/";
   }
 
   render() {
-    const { isAuthenticated } = store.getState().loginReducer;
+    const { authUser } = this.props;
+    const { notifications } = this.state;
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -45,12 +62,13 @@ class Navbar extends Component {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              {isAuthenticated ? (
+              { authUser.isAuthenticated ? (
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item">
-                    <Link to="/users/reset-password">
-                      <i className="far fa-bell fa-2x nav-link text-white" />
-                    </Link>
+                    <Notifications
+                      notifications={notifications}
+                      markAsReadHandler={this.markAsReadHandler}
+                    />
                   </li>
                   <li>
                     <div className="dropdown" id="profileImage">
@@ -83,7 +101,7 @@ class Navbar extends Component {
 }
 const DropDownMenu = ({ clicked }) => (
   <div className="dropdown-menu" aria-labelledby="dropdownMenu">
-    <button className="dropdown-item" type="button">My profile</button>
+    <Link to="/users/dashboard" className="dropdown-item">My Profile</Link>
     <Link to="/article/create" className="dropdown-item">Write article</Link>
     <Link to="/users/dashboard" className="dropdown-item">My bookmarks</Link>
     <button className="dropdown-item" type="button">My favorites</button>
@@ -121,13 +139,18 @@ const NavbarLink = () => (
 
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
+  authUser: PropTypes.instanceOf(Object).isRequired,
 };
 DropDownMenu.propTypes = {
   clicked: PropTypes.func.isRequired,
 };
-const mapStateToProps = state => ({ logout: state.logout });
+const mapStateToProps = state => ({
+  logout: state.logout,
+  notifications: state.notifications.notifications,
+  authUser: state.loginReducer,
+});
 
 export default connect(
   mapStateToProps,
-  { logout },
+  { logout, fetchNotifications },
 )(Navbar);

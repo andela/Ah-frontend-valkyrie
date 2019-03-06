@@ -1,20 +1,11 @@
-import React, { Component } from "react";
+import React, { Fragment } from "react";
 
-class Footer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div>
-        <footer className="footer">
-            Copyright &copy; 2019 Authors Haven.
-        </footer>
-      </div>
-    );
-  }
-}
+const Footer = () => (
+  <Fragment>
+    <footer className="footer">
+      Copyright &copy; 2019 Authors Haven.
+    </footer>
+  </Fragment>
+);
 
 export default Footer;

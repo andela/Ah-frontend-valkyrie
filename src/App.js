@@ -17,6 +17,7 @@ import  SingleArticle  from "./components/articles/SingleArticle";
 import PostArticle from "./components/articles/CreateArticle";
 import UpdateArticle from "./components/articles/UpdateArticle";
 import SearchArticle from './components/search/SearchArticle';
+import ViewNotifications from "./components/notifications/ViewNotifications";
 
 if (localStorage.auth_token) {
   setAuthToken(localStorage.auth_token);
@@ -51,6 +52,7 @@ class App extends Component {
           <Route path="/articles/:slug/edit/" component={UpdateArticle} />
           <Route exact path="/articles/:slug" component={SingleArticle} />
           <Route exact path="/search" component={SearchArticle} />
+          <Route exact path="/notifications" component={ViewNotifications} />
         </div>
       </Router>
     );
