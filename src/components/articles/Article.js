@@ -114,7 +114,7 @@ export class Article extends Component {
           goToPrevious={this.goToPrevious}
         >
           {this.getPages()
-            .map(page => <PageItem label={page} clicked={this.goToSpecificPage} key={page} />)}
+            .map((page, key) => <PageItem label={page} clicked={this.goToSpecificPage} key={key} />)}
         </Pagination>
       </Fragment>
     );
@@ -124,7 +124,7 @@ export class Article extends Component {
 Article.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
   fetchPaginationArticles: PropTypes.func.isRequired,
-  articles: PropTypes.object.isRequired,
+  articles: PropTypes.instanceOf(Array).isRequired,
 };
 
 const mapStateToProps = state => ({

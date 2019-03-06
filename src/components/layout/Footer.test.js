@@ -1,11 +1,10 @@
 import React from "react";
 import expect from "expect";
 import { shallow } from "enzyme";
-import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 
-describe("Test sidebar component", () => {
-  const props = {};
-  const wrapper = shallow(<Sidebar {...props} />);
+describe("Test Footer component", () => {
+  const wrapper = shallow(<Footer />);
   it("Matches the snapshot", () => {
     expect(wrapper).toMatchSnapshot();
   });
