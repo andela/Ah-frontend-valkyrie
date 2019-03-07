@@ -10,7 +10,6 @@ import AverageRating from "./AverageRating";
 import "./styles/SingleArticle.css";
 import SocialShare from "../socialShare/SocialShare";
 import BookmarkArticle from '../Bookmarks/bookmarkArticle';
-import LikeArticle from "./LikeArticle";
 
 
 export const SingleArticleView = props => (
@@ -76,18 +75,15 @@ export const SingleArticleView = props => (
         <i className="font-weight-bold">
           {props.article.read_time}
         </i>
-            &nbsp; &nbsp; &nbsp;
-
-        { props.authUser.isAuthenticated ? (
-          <LikeArticle
-            likesCount={props.article.likes.count}
-            dislikesCount={props.article.dislikes.count}
-            slug={props.article.slug}
-            usersWhoLiked={props.article.likes.users}
-            usersWhoDisliked={props.article.dislikes.users}
-          />
-         ) : ('') }
-
+        &nbsp; &nbsp; &nbsp; (
+        {props.article.likes.count}
+        ) &nbsp;
+        <i className="fa fa-thumbs-up text-success" />
+        &nbsp; &nbsp; &nbsp;  (
+        {props.article.dislikes.count}
+        ) &nbsp;
+        <i className="fa fa-thumbs-down text-danger" />
+        &nbsp; &nbsp; &nbsp;
         <i className="far fa-heart text-danger" />
         &nbsp; &nbsp; &nbsp;
         { props.authUser.isAuthenticated ? 
@@ -122,7 +118,7 @@ export const SingleArticleView = props => (
           <strong className="text-danger">
             <i className="fa fa-exclamation-triangle" />
             {" "}
-You need to login in order to like or comment on this article!
+              You need to login in order to comment on this article!
           </strong>
         </Fragment>
       )}

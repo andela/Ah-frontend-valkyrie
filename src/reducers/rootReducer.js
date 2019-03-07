@@ -10,7 +10,6 @@ import LikeReducer from "../components/comments/reducers/UserReactionsReducer";
 import rateReducer from "./rateReducer";
 import socialShareReducer from "./socialShareReducer";
 import bookmarkReducer from "../components/Bookmarks/reducers/bookmarkReducer"
-import likeDislikeArticleReducer from "./likeArticleReducer";
 
 export default combineReducers({
   loginReducer,
@@ -23,6 +22,6 @@ export default combineReducers({
   rated: rateReducer,
   socialShareReducer,
   reactions: LikeReducer,
-  bookmarkReducer,
-  like: likeDislikeArticleReducer,
+  bookmarkReducer
 });
+

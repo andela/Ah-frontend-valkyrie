@@ -1,4 +1,5 @@
 import passwordResetReducer from "./passwordResetReducer";
+import { passwordResetSuccess } from "../actions/ResetPasswordLinkAction";
 import actionTypes from "../actions/actionTypes";
 
 const newMessage = "A password reset email has been sent to your email account!";

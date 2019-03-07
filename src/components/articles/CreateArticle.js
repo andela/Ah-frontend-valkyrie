@@ -1,52 +1,52 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import Sidebar from "../layout/Sidebar";
-import Footer from "../layout/Footer";
-import { addArticle } from "../../actions/articleActions";
-import CreateArticleForm from "./CreateArticleForm";
+import Sidebar from '../layout/Sidebar';
+import Footer from '../layout/Footer';
+import { addArticle } from '../../actions/articleActions';
+import CreateArticleForm from './CreateArticleForm';
 
 export class CreateArticle extends Component {
   constructor( props ) {
     super( props );
     this.state = {
-      title: "",
-      description: "",
-      articleBody: "",
-      tags: "",
-      articleError: "",
+      title: '',
+      description: '',
+      articleBody: '',
+      tags: '',
+      articleError: '',
       articleCreated: false,
       createError: false,
       otherError: false,
     };
 
-    this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.handleOnSubmit = this.handleOnSubmit.bind(this);
-    this.handleEditor = this.handleEditor.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind( this );
+    this.handleOnSubmit = this.handleOnSubmit.bind( this );
+    this.handleEditor = this.handleEditor.bind( this );
   }
 
-  onChangeHandler(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  onChangeHandler( e ) {
+    this.setState( { [ e.target.name ]: e.target.value } );
   }
 
-  handleEditor(event) {
-    this.setState({
+  handleEditor( event ) {
+    this.setState( {
       articleBody: event,
-    });
+    } );
   }
 
-  handleOnSubmit(event) {
+  handleOnSubmit( event ) {
     event.preventDefault();
     const article = {
       title: this.state.title,
       description: this.state.description,
       body: this.state.articleBody,
-      tagList: this.state.tags.split(","),
+      tagList: this.state.tags.split( ',' ),
     };
-    this.props.addArticle(article);
+    this.props.addArticle( article );
   }
 
   componentWillReceiveProps( nextProps ) {
@@ -71,9 +71,9 @@ export class CreateArticle extends Component {
               <div className="row">
                 <div className="col-md-9">
                   <CreateArticleForm
-                    handleOnChange={this.onChangeHandler}
-                    handleEditor={this.handleEditor}
-                    handleOnSubmit={this.handleOnSubmit}
+                    handleOnChange={ this.onChangeHandler }
+                    handleEditor={ this.handleEditor }
+                    handleOnSubmit={ this.handleOnSubmit }
                   />
                 </div>
                 <div className="col-md-3">
@@ -105,6 +105,6 @@ const mapStateToProps = state => ( {
   article: state.articles,
   articleError: state.articles.errors,
   authUser: state.loginReducer,
-});
+} );
 
-export default connect(mapStateToProps, { addArticle })(CreateArticle);
+export default connect( mapStateToProps, { addArticle } )( CreateArticle );
