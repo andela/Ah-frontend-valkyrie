@@ -10,17 +10,18 @@ import { addArticle } from "../../actions/articleActions";
 import CreateArticleForm from "./CreateArticleForm";
 
 export class CreateArticle extends Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {
       title: "",
       description: "",
       articleBody: "",
       tags: "",
+      image_url: "",
       articleError: "",
       articleCreated: false,
       createError: false,
-      otherError: false,
+      otherError: false
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -40,32 +41,35 @@ export class CreateArticle extends Component {
 
   handleOnSubmit(event) {
     event.preventDefault();
+    const img_url = this.state.image_url;
+    const img = window.localStorage.getItem("newImage");
     const article = {
       title: this.state.title,
       description: this.state.description,
       body: this.state.articleBody,
       tagList: this.state.tags.split(","),
+      image_url: img_url !== "" ? img_url : img
     };
     this.props.addArticle(article);
   }
 
-  componentWillReceiveProps( nextProps ) {
+  componentWillReceiveProps(nextProps) {
     const article = nextProps.article.articles;
-    if ( article ) {
-      this.props.history.push( `/articles/${ article.slug }` );
-    } else if ( nextProps.articleError ) {
-      this.setState({createError: true});
-      toast.info( 'Error while saving your data' );
+    if (article) {
+      this.props.history.push(`/articles/${article.slug}`);
+    } else if (nextProps.articleError) {
+      this.setState({ createError: true });
+      toast.info("Error while saving your data");
     } else {
-      this.setState({otherError: true});
-      toast.warning( 'Error while saving your data' );
+      this.setState({ otherError: true });
+      toast.warning("Error while saving your data");
     }
   }
 
   render() {
     return (
       <Fragment>
-        { this.props.authUser.isAuthenticated ? (
+        {this.props.authUser.isAuthenticated ? (
           <div>
             <div className="container single-item mt-5 mb-5">
               <div className="row">
@@ -89,9 +93,16 @@ export class CreateArticle extends Component {
             <div className="container mt-5">
               <div className="alert alert-danger" role="alert">
                 <h4 className="alert-heading">Authentication Required!</h4>
-                <p>To write an article you must be a logged in user. Create an account with your email or sign up with social media and start writing your articles. </p>
+                <p>
+                  To write an article you must be a logged in user. Create an
+                  account with your email or sign up with social media and start
+                  writing your articles.{" "}
+                </p>
                 <hr />
-                <p className="mb-0">AUTHORS HAVEN - A social platform for the creative at heart - Bringing together a community of like-minded authors.</p>
+                <p className="mb-0">
+                  AUTHORS HAVEN - A social platform for the creative at heart -
+                  Bringing together a community of like-minded authors.
+                </p>
               </div>
             </div>
           </div>
@@ -101,10 +112,13 @@ export class CreateArticle extends Component {
   }
 }
 
-const mapStateToProps = state => ( {
+const mapStateToProps = state => ({
   article: state.articles,
   articleError: state.articles.errors,
-  authUser: state.loginReducer,
+  authUser: state.loginReducer
 });
 
-export default connect(mapStateToProps, { addArticle })(CreateArticle);
+export default connect(
+  mapStateToProps,
+  { addArticle }
+)(CreateArticle);

@@ -15,7 +15,7 @@ class Register extends Component {
       password: "",
       password2: "",
       disabled: false,
-      errors: {},
+      errors: {}
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -30,7 +30,7 @@ class Register extends Component {
     }
   }
 
-  onChange = (e) => {
+  onChange = e => {
     if (e.target.name === "password2") {
       const { password } = this.state;
       if (password !== e.target.value) {
@@ -49,13 +49,13 @@ class Register extends Component {
     const userData = {
       username: this.state.username,
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.password
     };
     this.props.signUp(userData);
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors } = this.props;
     const none = "none";
     const block = "block";
 
@@ -88,19 +88,19 @@ Register.propTypes = {
   onSubmit: PropTypes.func,
   errors: PropTypes.object,
   signUp: PropTypes.func,
-  isAuthenticated: PropTypes.bool,
+  isAuthenticated: PropTypes.bool
 };
 
 Register.defaultProps = {
-  isAuthenticated: false,
+  isAuthenticated: false
 };
 
 const mapStateToProps = state => ({
   errors: state.signupReducer.errors,
-  isAuthenticated: state.isAuthenticated,
+  isAuthenticated: state.isAuthenticated
 });
 
 export default connect(
   mapStateToProps,
-  { signUp },
+  { signUp }
 )(Register);
