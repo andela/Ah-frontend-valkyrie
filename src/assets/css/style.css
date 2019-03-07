@@ -115,3 +115,6 @@ button[type="button"]:hover {
   color: #007bff!important;
   cursor: pointer;
 }
+.row-single-article {
+  margin-top: 3px !important;
+}
