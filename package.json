@@ -15,7 +15,7 @@
     "test:w": "jest --watch --coverage",
     "test:coverage": "jest --coverage --colors",
     "eject": "react-scripts eject",
-    "start": "node server.js",
+    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "heroku-postbuild": "npm run build",
     "test:watch": "jest --watchAll"
@@ -65,6 +65,7 @@
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.5",
+    "react-tabs": "^3.0.0",
     "react-test-renderer": "^16.8.1",
     "react-toastify": "^4.5.2",
     "react-toasts": "^3.0.0",

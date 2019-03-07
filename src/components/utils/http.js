@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const baseUrl = `${process.env.HOST}/`;
 
-const putPostConfig = (method, body = null) => {
+export const putPostConfig = (method, body = null) => {
   const upperCasedMethod = method.toUpperCase();
   const token = window.localStorage.getItem("auth_token");
   const config = {
@@ -20,7 +20,7 @@ const putPostConfig = (method, body = null) => {
   return config;
 };
 
-const getConfig = (method) => {
+export const getConfig = (method) => {
   const upperCasedMethod = method.toUpperCase();
   const config = {
     method: upperCasedMethod,

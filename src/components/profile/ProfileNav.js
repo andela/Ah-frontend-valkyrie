@@ -1,5 +1,6 @@
 import React from "react";
 import profileImage from "../../assets/images/img_avatar.png";
+import Subscribe from "../notifications/notify";
 
 const ProfileNav = ({
   profile, isEditAvailable, onClickEdit, onClickClose, newStateAvailable,
@@ -15,6 +16,10 @@ const ProfileNav = ({
       {" "}
         |
       <span><a href="#">Followers (2)</a></span>
+      {" "}
+      <div className="mt-5">
+        <span><Subscribe /></span>
+      </div>
     </div>
     <div className="col-sm-4 col-profile second">
       <img src={profileImage} className="img-profile" alt="Avatar" />
