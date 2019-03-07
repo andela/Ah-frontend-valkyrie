@@ -29,7 +29,7 @@ describe("Test create article component", () => {
     articleBody: "",
     tags: "",
     articleError: "",
-    articleCreated: false,
+    articleCreated: false
   };
 
   const wrapper = shallow(<CreateArticle {...props} />);

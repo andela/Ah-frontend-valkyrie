@@ -3,7 +3,7 @@ import expect from 'expect';
 import { shallow } from 'enzyme';
 import { UpdateArticle } from '../UpdateArticle';
 
-describe("Test update article component", () => {
+describe( 'Test update article component', () => {
   const props = {
     updatedArticle: {},
     articleError: {},
@@ -38,9 +38,9 @@ describe("Test update article component", () => {
   const wrapper = shallow( <UpdateArticle { ...props } /> );
   wrapper.setState(state);
 
-  it("Matches the snapshot", () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+  it( 'Matches the snapshot', () => {
+    expect( wrapper ).toMatchSnapshot();
+  } );
 
   it("Should handle on change", () => {
     const event = {
